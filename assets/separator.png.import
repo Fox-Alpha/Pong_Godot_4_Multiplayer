@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dtsss2mk683kw"
-path="res://.godot/imported/separator.png-06cd69003a1f0f8a6d28a666a7595780.ctex"
+path="res://.godot/imported/separator.png-ee834ac2add8e4477f251f1d5cfe122e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/separator.png"
-dest_files=["res://.godot/imported/separator.png-06cd69003a1f0f8a6d28a666a7595780.ctex"]
+source_file="res://assets/separator.png"
+dest_files=["res://.godot/imported/separator.png-ee834ac2add8e4477f251f1d5cfe122e.ctex"]
 
 [params]
 

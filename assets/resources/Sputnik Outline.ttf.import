@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://cubdr6h8nyd8f"
-path="res://.godot/imported/Sputnik Outline.ttf-422864b5504c69565dd8fb4c5b0b5f75.fontdata"
+path="res://.godot/imported/Sputnik Outline.ttf-77f97672d8eb8b6eb404b6f15eced4c9.fontdata"
 
 [deps]
 
-source_file="res://Assets/resources/Sputnik Outline.ttf"
-dest_files=["res://.godot/imported/Sputnik Outline.ttf-422864b5504c69565dd8fb4c5b0b5f75.fontdata"]
+source_file="res://assets/resources/Sputnik Outline.ttf"
+dest_files=["res://.godot/imported/Sputnik Outline.ttf-77f97672d8eb8b6eb404b6f15eced4c9.fontdata"]
 
 [params]
 
