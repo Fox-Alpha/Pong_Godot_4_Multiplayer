@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://cbgr6opo5q1t2"
-path="res://.godot/imported/Sputnik.ttf-cc449dc5028e7a8531169975746c0263.fontdata"
+path="res://.godot/imported/Sputnik.ttf-0d6520f3c137000b879f062187bb0561.fontdata"
 
 [deps]
 
-source_file="res://Assets/resources/Sputnik.ttf"
-dest_files=["res://.godot/imported/Sputnik.ttf-cc449dc5028e7a8531169975746c0263.fontdata"]
+source_file="res://assets/resources/Sputnik.ttf"
+dest_files=["res://.godot/imported/Sputnik.ttf-0d6520f3c137000b879f062187bb0561.fontdata"]
 
 [params]
 
