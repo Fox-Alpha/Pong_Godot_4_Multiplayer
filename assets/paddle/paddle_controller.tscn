@@ -9,6 +9,7 @@ size = Vector2(8, 32)
 [node name="PaddleController" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_6nf3y")
+playercolor = Color(0, 0.0666667, 1, 1)
 
 [node name="Paddle" type="Sprite2D" parent="."]
 scale = Vector2(1, 2)
