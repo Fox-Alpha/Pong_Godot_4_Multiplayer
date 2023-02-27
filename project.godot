@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Pong_Godot_4_Multiplayer"
+run/main_scene="res://scenes/pong.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 boot_splash/show_image=false
 config/icon="res://icon.svg"
