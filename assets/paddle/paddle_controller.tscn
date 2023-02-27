@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://buv47iv1kj157"]
+[gd_scene load_steps=4 format=3 uid="uid://coriecy1ouck2"]
 
 [ext_resource type="Script" path="res://assets/paddle/paddle_controller.gd" id="1_6nf3y"]
 [ext_resource type="Texture2D" uid="uid://dv07jo0a6u45v" path="res://assets/paddle/left_pallete.png" id="1_lcf6c"]

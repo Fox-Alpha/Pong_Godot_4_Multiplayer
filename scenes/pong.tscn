@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://Scripts/pong.gd" id="1_mwuiw"]
 [ext_resource type="PackedScene" uid="uid://b83gul6dnaceu" path="res://assets/ui.tscn" id="1_uc0f2"]
-[ext_resource type="PackedScene" uid="uid://buv47iv1kj157" path="res://assets/paddle/paddle_controller.tscn" id="2_disvp"]
 [ext_resource type="Texture2D" uid="uid://drn4e3mbde83i" path="res://assets/images/bg.jpg" id="2_p24oy"]
 [ext_resource type="PackedScene" uid="uid://djj8j6o0w8386" path="res://assets/Border.tscn" id="4_cuaoi"]
-[ext_resource type="PackedScene" uid="uid://bxoq0ug0n5lgs" path="res://assets/ball/ball_body.tscn" id="5_uf8eb"]
+[ext_resource type="PackedScene" uid="uid://bxoq0ug0n5lgs" path="res://Assets/ball/ball_body.tscn" id="5_uf8eb"]
+[ext_resource type="PackedScene" uid="uid://coriecy1ouck2" path="res://assets/paddle/paddle_controller.tscn" id="7_0ob1d"]
 [ext_resource type="Texture2D" uid="uid://dtsss2mk683kw" path="res://assets/separator.png" id="7_5w5cs"]
 
 [node name="Pong" type="Node2D"]
@@ -27,15 +27,6 @@ texture = ExtResource("2_p24oy")
 z_index = 1
 layout_mode = 1
 
-[node name="Left" parent="." instance=ExtResource("2_disvp")]
-z_index = 3
-playercolor = Color(0.266667, 0.486275, 1, 1)
-
-[node name="Right" parent="." instance=ExtResource("2_disvp")]
-z_index = 3
-PlayerPaddle = 1
-playercolor = Color(0.996078, 0, 0, 1)
-
 [node name="Border" type="Node2D" parent="."]
 
 [node name="TopBorder" parent="Border" instance=ExtResource("4_cuaoi")]
@@ -48,3 +39,7 @@ z_index = 3
 [node name="Separator" type="Sprite2D" parent="."]
 z_index = -1
 texture = ExtResource("7_5w5cs")
+
+[node name="Left" parent="." instance=ExtResource("7_0ob1d")]
+
+[node name="Right" parent="." instance=ExtResource("7_0ob1d")]
