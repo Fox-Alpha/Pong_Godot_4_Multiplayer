@@ -3,6 +3,9 @@
 [ext_resource type="Script" path="res://Assets/Gui/StartGameView.gd" id="1_02p71"]
 
 [node name="StartGameView" type="VBoxContainer"]
+custom_minimum_size = Vector2(0, 350)
+offset_right = 512.0
+offset_bottom = 350.0
 theme_override_constants/separation = 10
 script = ExtResource("1_02p71")
 
@@ -67,6 +70,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Left Player"
 
+[node name="ColorPickerButtonP1" type="ColorPickerButton" parent="TabContainer/StartLocalGame/MarginContainer/VBoxContainer/PanelContainer_PlayerName/MarginContainer/VBoxContainer/HBoxPlayername"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Choose Color"
+color = Color(0, 0, 1, 1)
+
 [node name="HBoxPlayername_2" type="HBoxContainer" parent="TabContainer/StartLocalGame/MarginContainer/VBoxContainer/PanelContainer_PlayerName/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 3
@@ -83,6 +92,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Right Player"
 
+[node name="ColorPickerButtonP2" type="ColorPickerButton" parent="TabContainer/StartLocalGame/MarginContainer/VBoxContainer/PanelContainer_PlayerName/MarginContainer/VBoxContainer/HBoxPlayername_2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Choose Color"
+color = Color(1, 0, 0.298039, 1)
+
 [node name="PanelContainer_Maxpoints" type="PanelContainer" parent="TabContainer/StartLocalGame/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
@@ -93,37 +108,58 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 5
 
-[node name="HBoxPlayername" type="HBoxContainer" parent="TabContainer/StartLocalGame/MarginContainer/VBoxContainer/PanelContainer_Maxpoints/MarginContainer"]
+[node name="HBoxRoundsScore" type="HBoxContainer" parent="TabContainer/StartLocalGame/MarginContainer/VBoxContainer/PanelContainer_Maxpoints/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 3
 
-[node name="Label" type="Label" parent="TabContainer/StartLocalGame/MarginContainer/VBoxContainer/PanelContainer_Maxpoints/MarginContainer/HBoxPlayername"]
+[node name="VBoxContainer_Rounds" type="VBoxContainer" parent="TabContainer/StartLocalGame/MarginContainer/VBoxContainer/PanelContainer_Maxpoints/MarginContainer/HBoxRoundsScore"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="TabContainer/StartLocalGame/MarginContainer/VBoxContainer/PanelContainer_Maxpoints/MarginContainer/HBoxRoundsScore/VBoxContainer_Rounds"]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 text = "Rounds: "
 
-[node name="EditLocalMaxRounds" type="LineEdit" parent="TabContainer/StartLocalGame/MarginContainer/VBoxContainer/PanelContainer_Maxpoints/MarginContainer/HBoxPlayername"]
+[node name="HSliderRounds" type="HSlider" parent="TabContainer/StartLocalGame/MarginContainer/VBoxContainer/PanelContainer_Maxpoints/MarginContainer/HBoxRoundsScore/VBoxContainer_Rounds"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+max_value = 25.0
+value = 3.0
+exp_edit = true
+
+[node name="EditLocalMaxRounds" type="Label" parent="TabContainer/StartLocalGame/MarginContainer/VBoxContainer/PanelContainer_Maxpoints/MarginContainer/HBoxRoundsScore/VBoxContainer_Rounds"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 1)
 layout_mode = 2
 text = "3"
 
-[node name="Control" type="Control" parent="TabContainer/StartLocalGame/MarginContainer/VBoxContainer/PanelContainer_Maxpoints/MarginContainer/HBoxPlayername"]
-custom_minimum_size = Vector2(1, 0)
+[node name="Control" type="Control" parent="TabContainer/StartLocalGame/MarginContainer/VBoxContainer/PanelContainer_Maxpoints/MarginContainer/HBoxRoundsScore"]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label_2" type="Label" parent="TabContainer/StartLocalGame/MarginContainer/VBoxContainer/PanelContainer_Maxpoints/MarginContainer/HBoxPlayername"]
+[node name="VBoxContainer_Points" type="VBoxContainer" parent="TabContainer/StartLocalGame/MarginContainer/VBoxContainer/PanelContainer_Maxpoints/MarginContainer/HBoxRoundsScore"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label_2" type="Label" parent="TabContainer/StartLocalGame/MarginContainer/VBoxContainer/PanelContainer_Maxpoints/MarginContainer/HBoxRoundsScore/VBoxContainer_Points"]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
-size_flags_horizontal = 8
 text = "Max Points: "
 
-[node name="EditLocalMaxPointsPerRound" type="LineEdit" parent="TabContainer/StartLocalGame/MarginContainer/VBoxContainer/PanelContainer_Maxpoints/MarginContainer/HBoxPlayername"]
+[node name="HSliderPoints" type="HSlider" parent="TabContainer/StartLocalGame/MarginContainer/VBoxContainer/PanelContainer_Maxpoints/MarginContainer/HBoxRoundsScore/VBoxContainer_Points"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 1.0
+value = 10.0
+exp_edit = true
+
+[node name="EditLocalMaxPointsPerRound" type="Label" parent="TabContainer/StartLocalGame/MarginContainer/VBoxContainer/PanelContainer_Maxpoints/MarginContainer/HBoxRoundsScore/VBoxContainer_Points"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(50, 1)
 layout_mode = 2
-size_flags_horizontal = 10
 text = "10"
 
 [node name="Control" type="Control" parent="TabContainer/StartLocalGame/MarginContainer/VBoxContainer"]
@@ -164,22 +200,6 @@ theme_override_font_sizes/font_size = 25
 text = "Join Multiplayer Server"
 horizontal_alignment = 1
 
-[node name="HBoxPlayername" type="HBoxContainer" parent="TabContainer/MultiplayerClient/MarginContainer/PanelContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 3
-
-[node name="Label" type="Label" parent="TabContainer/MultiplayerClient/MarginContainer/PanelContainer/VBoxContainer/HBoxPlayername"]
-custom_minimum_size = Vector2(120, 0)
-layout_mode = 2
-text = "Playername: "
-
-[node name="EditPlayername" type="LineEdit" parent="TabContainer/MultiplayerClient/MarginContainer/PanelContainer/VBoxContainer/HBoxPlayername"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(1, 1)
-layout_mode = 2
-size_flags_horizontal = 3
-placeholder_text = "Player Name"
-
 [node name="HBoxServerAdress" type="HBoxContainer" parent="TabContainer/MultiplayerClient/MarginContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 3
@@ -208,6 +228,26 @@ custom_minimum_size = Vector2(60, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Player Name"
+
+[node name="HBoxPlayername" type="HBoxContainer" parent="TabContainer/MultiplayerClient/MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="Label" type="Label" parent="TabContainer/MultiplayerClient/MarginContainer/PanelContainer/VBoxContainer/HBoxPlayername"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Playername: "
+
+[node name="EditPlayername" type="LineEdit" parent="TabContainer/MultiplayerClient/MarginContainer/PanelContainer/VBoxContainer/HBoxPlayername"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Player Name"
+
+[node name="ColorPickerButtonClient" type="ColorPickerButton" parent="TabContainer/MultiplayerClient/MarginContainer/PanelContainer/VBoxContainer/HBoxPlayername"]
+layout_mode = 2
+text = "Player Color"
 
 [node name="HBoxContainer_3" type="HBoxContainer" parent="TabContainer/MultiplayerClient/MarginContainer/PanelContainer/VBoxContainer"]
 layout_mode = 2
@@ -271,6 +311,10 @@ layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Player Name"
 
+[node name="ColorPickerButtonHost" type="ColorPickerButton" parent="TabContainer/MultiplayerHost/MarginContainer/VBoxContainer/PanelContainer_PlayerName/MarginContainer/HBoxPlayername"]
+layout_mode = 2
+text = "PlayerColor"
+
 [node name="PanelContainer_Maxpoints" type="PanelContainer" parent="TabContainer/MultiplayerHost/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
@@ -332,5 +376,9 @@ size_flags_horizontal = 6
 text = "Main Menu
 "
 
+[connection signal="value_changed" from="TabContainer/StartLocalGame/MarginContainer/VBoxContainer/PanelContainer_Maxpoints/MarginContainer/HBoxRoundsScore/VBoxContainer_Rounds/HSliderRounds" to="." method="_on_h_slider_rounds_value_changed"]
+[connection signal="ready" from="TabContainer/StartLocalGame/MarginContainer/VBoxContainer/PanelContainer_Maxpoints/MarginContainer/HBoxRoundsScore/VBoxContainer_Rounds/EditLocalMaxRounds" to="." method="_on_edit_local_max_rounds_ready"]
+[connection signal="ready" from="TabContainer/StartLocalGame/MarginContainer/VBoxContainer/PanelContainer_Maxpoints/MarginContainer/HBoxRoundsScore/VBoxContainer_Points/HSliderPoints" to="." method="_on_h_slider_points_ready"]
+[connection signal="value_changed" from="TabContainer/StartLocalGame/MarginContainer/VBoxContainer/PanelContainer_Maxpoints/MarginContainer/HBoxRoundsScore/VBoxContainer_Points/HSliderPoints" to="." method="_on_h_slider_value_changed"]
 [connection signal="pressed" from="TabContainer/StartLocalGame/MarginContainer/VBoxContainer/ButtonStartLocalGame" to="." method="_on_button_start_pressed"]
 [connection signal="pressed" from="ButtonBackToMainmenu" to="." method="_on_button_back_to_mainmenu_pressed"]

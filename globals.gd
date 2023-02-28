@@ -53,10 +53,10 @@ func _check_win_state():
 		emit_signal("Game_Is_over", playerdic["player2"])
 
 
-func update_player_dict(p1:String, p2:String,score:int = 10,rounds:int = 3):
+func update_player_dict(p1:String, p2:String,score:int = 10,rounds:int = 3, colors:Array = [Color.DARK_BLUE, Color.ORANGE_RED]):
 	playerdic.clear()
 #
-	playerdic = {"player1":p1, "player2":p2, "rounds":rounds, "score": score}
+	playerdic = {"player1":p1, "player2":p2, "rounds":rounds, "score": score, "colors":colors}
 #
 	for r in range(1, rounds+1):
 		var roundname = "round_{rnd}".format({"rnd":str(r)})
@@ -74,16 +74,22 @@ func _ready():
 func _Game_Is_over(ply):
 	var roundname = "round_{rnd}".format({"rnd":str(currentround)})
 #	var won
-
+	
 #	match ply:
 #		"p1":
 #			won = 1
 #		"p2":
 #			won = 2
-
+	
 	playerdic[roundname] = {"p1": p1_score, "p2":p2_score, "won": ply}
 	currentround += 1
 	pass
+
+
+func get_playercolor(ply:int) -> Color:
+	var col = playerdic["colors"][ply]
+	return col
+
 #func ScoreLeft(score : int):
 #	pass # Replace with function body.
 #

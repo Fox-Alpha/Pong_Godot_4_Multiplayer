@@ -1,0 +1,11 @@
+Change Log 28.02.2023
+
+
+Add: Positionieren obere und untere Linie
+Add: Paddle Grafik, Weiss Transparent
+Add: Spielerfarbe zum Paddle
+Add: LocalGameUI: Slider für Score und Rundenanzahl
+Add: Farbauswahl an Playerdata weiterreichen
+Add: Background für Ingame UI
+Chg: Hierachie Ingame Scene geordnet
+Add: Obere und untere Linie zum spielfeld

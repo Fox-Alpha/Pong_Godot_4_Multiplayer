@@ -23,18 +23,8 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_v27gq")
 
-[node name="UI" parent="CanvasLayer/TextureRect" instance=ExtResource("1_uc0f2")]
+[node name="UI" parent="CanvasLayer" instance=ExtResource("1_uc0f2")]
 z_index = 1
-layout_mode = 1
-
-[node name="Left" parent="." instance=ExtResource("2_disvp")]
-z_index = 3
-playercolor = Color(0.266667, 0.486275, 1, 1)
-
-[node name="Right" parent="." instance=ExtResource("2_disvp")]
-z_index = 3
-PlayerPaddle = 1
-playercolor = Color(0.996078, 0, 0, 1)
 
 [node name="Border" type="Node2D" parent="."]
 
@@ -45,6 +35,34 @@ playercolor = Color(0.996078, 0, 0, 1)
 [node name="BallBody" parent="." instance=ExtResource("5_uf8eb")]
 z_index = 3
 
-[node name="Separator" type="Sprite2D" parent="."]
+[node name="Separators" type="Node2D" parent="."]
+
+[node name="Separator_Middle" type="Sprite2D" parent="Separators"]
+unique_name_in_owner = true
 z_index = -1
 texture = ExtResource("6_vic1v")
+
+[node name="Separator_Top" type="Sprite2D" parent="Separators"]
+unique_name_in_owner = true
+z_index = -1
+texture_filter = 1
+rotation = 1.5708
+texture = ExtResource("6_vic1v")
+
+[node name="Separator_Bottom" type="Sprite2D" parent="Separators"]
+unique_name_in_owner = true
+z_index = -1
+texture_filter = 1
+rotation = 1.5708
+texture = ExtResource("6_vic1v")
+
+[node name="Paddles" type="Node2D" parent="."]
+
+[node name="Left" parent="Paddles" instance=ExtResource("2_disvp")]
+unique_name_in_owner = true
+playercolor = Color(0, 0.72549, 0.945098, 1)
+
+[node name="Right" parent="Paddles" instance=ExtResource("2_disvp")]
+unique_name_in_owner = true
+PlayerPaddle = 1
+playercolor = Color(0.730376, 0.219538, 0.191373, 1)

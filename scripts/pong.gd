@@ -26,26 +26,43 @@ func start():
 	var screensize = get_viewport_rect()
 
 	# Paddle Positionen
-	$Left.position = Vector2(10, screensize.size.y/2)
-	$Right.position = Vector2(screensize.size.x-10, screensize.size.y/2)
+	%Left.position = Vector2(10, screensize.size.y/2)
+	%Right.position = Vector2(screensize.size.x-10, screensize.size.y/2)
 
 	# Optische Mittellinie an ScreenSize anpassen
-	$Separator.position = screensize.get_center()
-	var sizeto=Vector2(5,screensize.size.y)
-	var size=$Separator.texture.get_size()
+	%Separator_Middle.position = screensize.get_center()
+	var sizeto=Vector2(5,screensize.size.y-100)
+	var size=%Separator_Middle.texture.get_size()
 	var scalevactor=sizeto/size
-	$Separator.scale = scalevactor
+	%Separator_Middle.scale = scalevactor
+	
+	# Obere Linie
+	%Separator_Top.position.x = screensize.get_center().x
+	%Separator_Top.position.y = 60
+	var sizetoTOP=Vector2(5, screensize.size.x)
+	var sizeTOP=%Separator_Top.texture.get_size()
+	var scalevactorTOP=sizetoTOP/sizeTOP
+	%Separator_Top.scale = scalevactorTOP
+	
+	# Untere Linie
+	%Separator_Bottom.position.x = screensize.get_center().x
+	%Separator_Bottom.position.y = screensize.size.y-60
+	var sizetoBOT=Vector2(5, screensize.size.x)
+	var sizeBOT=%Separator_Bottom.texture.get_size()
+	var scalevactorBOT=sizetoBOT/sizeBOT
+	%Separator_Bottom.scale = scalevactorBOT
 
 	# Top Border an Screensize anpassen
 	top.shape.size.x = screensize.size.x
 	top.shape.size.y = 20
 	$Border/TopBorder.position.x = screensize.get_center().x
+	$Border/TopBorder.position.y = 40
 
 	# Bottom Border an Screensize anpassen
 	bottom.shape.size.x = screensize.size.x
 	bottom.shape.size.y = 20
 	$Border/BottomBorder.position.x = screensize.get_center().x
-	$Border/BottomBorder.position.y = screensize.size.y-10
+	$Border/BottomBorder.position.y = screensize.size.y-40
 
 
 func _input(event):

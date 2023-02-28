@@ -41,13 +41,13 @@ theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
 [node name="MainMenuView" parent="CanvasLayer/CenterContainer/HBoxContainer/MenuContainer/MarginContainer" node_paths=PackedStringArray("maingamemenu", "startnewgamemenu", "settingsmenu") instance=ExtResource("5_xpei7")]
+visible = false
 layout_mode = 2
 maingamemenu = NodePath(".")
 startnewgamemenu = NodePath("../StartNewGameView")
 settingsmenu = NodePath("../GameSettingsView")
 
 [node name="StartNewGameView" parent="CanvasLayer/CenterContainer/HBoxContainer/MenuContainer/MarginContainer" node_paths=PackedStringArray("backbuttonmenu") instance=ExtResource("6_1wo5n")]
-visible = false
 layout_mode = 2
 backbuttonmenu = NodePath("../MainMenuView")
 
