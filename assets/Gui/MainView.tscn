@@ -1,0 +1,303 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2eurus3brfdy"]
+
+[ext_resource type="Theme" uid="uid://wvu4pacnfwqt" path="res://Assets/Resouces/ui_theme.tres" id="1_swsfj"]
+[ext_resource type="Script" path="res://Assets/Gui/MainView.gd" id="2_ukhw8"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_swsfj")
+script = ExtResource("2_ukhw8")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="MenuContainer" type="PanelContainer" parent="CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(512, 256)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/HBoxContainer/MenuContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer/MenuContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="CenterContainer/HBoxContainer/MenuContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 48
+text = "Game Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonStart" type="Button" parent="CenterContainer/HBoxContainer/MenuContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 30
+text = "Start Game"
+
+[node name="StartOptions" type="MarginContainer" parent="CenterContainer/HBoxContainer/MenuContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer/MenuContainer/MarginContainer/VBoxContainer/StartOptions"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="ButtonStartHotSeat" type="Button" parent="CenterContainer/HBoxContainer/MenuContainer/MarginContainer/VBoxContainer/StartOptions/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Local Hotseat"
+
+[node name="ButtonMultiplayerOptions" type="Button" parent="CenterContainer/HBoxContainer/MenuContainer/MarginContainer/VBoxContainer/StartOptions/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "Multiplayer
+"
+
+[node name="ContainerMultiplayerOptions" type="MarginContainer" parent="CenterContainer/HBoxContainer/MenuContainer/MarginContainer/VBoxContainer/StartOptions/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer/MenuContainer/MarginContainer/VBoxContainer/StartOptions/VBoxContainer/ContainerMultiplayerOptions"]
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="ButtonJoinServer" type="Button" parent="CenterContainer/HBoxContainer/MenuContainer/MarginContainer/VBoxContainer/StartOptions/VBoxContainer/ContainerMultiplayerOptions/VBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Join Server"
+
+[node name="ButtonCreateServer" type="Button" parent="CenterContainer/HBoxContainer/MenuContainer/MarginContainer/VBoxContainer/StartOptions/VBoxContainer/ContainerMultiplayerOptions/VBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Start Server"
+
+[node name="ButtonSettings" type="Button" parent="CenterContainer/HBoxContainer/MenuContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 30
+text = "Settings"
+
+[node name="ButtonQuit" type="Button" parent="CenterContainer/HBoxContainer/MenuContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 30
+text = "Quit"
+
+[node name="MultiplayerHost" type="PanelContainer" parent="CenterContainer/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(512, 0)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/HBoxContainer/MultiplayerHost"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer/MultiplayerHost/MarginContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="PanelContainerTitle" type="PanelContainer" parent="CenterContainer/HBoxContainer/MultiplayerHost/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/HBoxContainer/MultiplayerHost/MarginContainer/VBoxContainer/PanelContainerTitle"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Create Multiplayer Server"
+horizontal_alignment = 1
+
+[node name="PanelContainer_PlayerName" type="PanelContainer" parent="CenterContainer/HBoxContainer/MultiplayerHost/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/HBoxContainer/MultiplayerHost/MarginContainer/VBoxContainer/PanelContainer_PlayerName"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxPlayername" type="HBoxContainer" parent="CenterContainer/HBoxContainer/MultiplayerHost/MarginContainer/VBoxContainer/PanelContainer_PlayerName/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="Label" type="Label" parent="CenterContainer/HBoxContainer/MultiplayerHost/MarginContainer/VBoxContainer/PanelContainer_PlayerName/MarginContainer/HBoxPlayername"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Playername: "
+
+[node name="EditPlayername" type="LineEdit" parent="CenterContainer/HBoxContainer/MultiplayerHost/MarginContainer/VBoxContainer/PanelContainer_PlayerName/MarginContainer/HBoxPlayername"]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Player Name"
+
+[node name="PanelContainer_Maxpoints" type="PanelContainer" parent="CenterContainer/HBoxContainer/MultiplayerHost/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/HBoxContainer/MultiplayerHost/MarginContainer/VBoxContainer/PanelContainer_Maxpoints"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxPlayername" type="HBoxContainer" parent="CenterContainer/HBoxContainer/MultiplayerHost/MarginContainer/VBoxContainer/PanelContainer_Maxpoints/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="Label" type="Label" parent="CenterContainer/HBoxContainer/MultiplayerHost/MarginContainer/VBoxContainer/PanelContainer_Maxpoints/MarginContainer/HBoxPlayername"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Rounds: "
+
+[node name="EditMaxRounds" type="LineEdit" parent="CenterContainer/HBoxContainer/MultiplayerHost/MarginContainer/VBoxContainer/PanelContainer_Maxpoints/MarginContainer/HBoxPlayername"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 1)
+layout_mode = 2
+text = "3"
+
+[node name="Control" type="Control" parent="CenterContainer/HBoxContainer/MultiplayerHost/MarginContainer/VBoxContainer/PanelContainer_Maxpoints/MarginContainer/HBoxPlayername"]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label_2" type="Label" parent="CenterContainer/HBoxContainer/MultiplayerHost/MarginContainer/VBoxContainer/PanelContainer_Maxpoints/MarginContainer/HBoxPlayername"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Max Points: "
+
+[node name="EditMaxPointsPerRound" type="LineEdit" parent="CenterContainer/HBoxContainer/MultiplayerHost/MarginContainer/VBoxContainer/PanelContainer_Maxpoints/MarginContainer/HBoxPlayername"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 1)
+layout_mode = 2
+size_flags_horizontal = 10
+text = "10"
+
+[node name="Control" type="Control" parent="CenterContainer/HBoxContainer/MultiplayerHost/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="ButtonServer" type="Button" parent="CenterContainer/HBoxContainer/MultiplayerHost/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Create Server
+"
+
+[node name="MultiplayerClient" type="PanelContainer" parent="CenterContainer/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/HBoxContainer/MultiplayerClient"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer/HBoxContainer/MultiplayerClient/MarginContainer"]
+custom_minimum_size = Vector2(512, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer/MultiplayerClient/MarginContainer/PanelContainer"]
+custom_minimum_size = Vector2(512, 100)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="CenterContainer/HBoxContainer/MultiplayerClient/MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Join Multiplayer Server"
+horizontal_alignment = 1
+
+[node name="HBoxPlayername" type="HBoxContainer" parent="CenterContainer/HBoxContainer/MultiplayerClient/MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="Label" type="Label" parent="CenterContainer/HBoxContainer/MultiplayerClient/MarginContainer/PanelContainer/VBoxContainer/HBoxPlayername"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Playername: "
+
+[node name="EditPlayername" type="LineEdit" parent="CenterContainer/HBoxContainer/MultiplayerClient/MarginContainer/PanelContainer/VBoxContainer/HBoxPlayername"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Player Name"
+
+[node name="HBoxServerAdress" type="HBoxContainer" parent="CenterContainer/HBoxContainer/MultiplayerClient/MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="Label" type="Label" parent="CenterContainer/HBoxContainer/MultiplayerClient/MarginContainer/PanelContainer/VBoxContainer/HBoxServerAdress"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "Serveradress: "
+
+[node name="EditServerAdress" type="LineEdit" parent="CenterContainer/HBoxContainer/MultiplayerClient/MarginContainer/PanelContainer/VBoxContainer/HBoxServerAdress"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(280, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "localhost"
+placeholder_text = "Server Adress"
+
+[node name="Label_2" type="Label" parent="CenterContainer/HBoxContainer/MultiplayerClient/MarginContainer/PanelContainer/VBoxContainer/HBoxServerAdress"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "Port"
+
+[node name="EditServerPort" type="LineEdit" parent="CenterContainer/HBoxContainer/MultiplayerClient/MarginContainer/PanelContainer/VBoxContainer/HBoxServerAdress"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Player Name"
+
+[node name="HBoxContainer_3" type="HBoxContainer" parent="CenterContainer/HBoxContainer/MultiplayerClient/MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ButtonJoin" type="Button" parent="CenterContainer/HBoxContainer/MultiplayerClient/MarginContainer/PanelContainer/VBoxContainer/HBoxContainer_3"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Join"
+
+[connection signal="pressed" from="CenterContainer/HBoxContainer/MenuContainer/MarginContainer/VBoxContainer/ButtonStart" to="." method="_on_button_start_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/MenuContainer/MarginContainer/VBoxContainer/StartOptions/VBoxContainer/ButtonStartHotSeat" to="." method="_on_button_start_hot_seat_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/MenuContainer/MarginContainer/VBoxContainer/StartOptions/VBoxContainer/ButtonMultiplayerOptions" to="." method="_on_button_multiplayer_options_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/MenuContainer/MarginContainer/VBoxContainer/StartOptions/VBoxContainer/ContainerMultiplayerOptions/VBoxContainer/ButtonJoinServer" to="." method="_on_button_join_server_pressed"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/MenuContainer/MarginContainer/VBoxContainer/StartOptions/VBoxContainer/ContainerMultiplayerOptions/VBoxContainer/ButtonCreateServer" to="." method="_on_button_create_server_pressed"]

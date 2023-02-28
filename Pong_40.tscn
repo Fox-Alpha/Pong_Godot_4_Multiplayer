@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://dkc3vognpleb1"]
+
+[ext_resource type="Script" path="res://Scripts/pong.gd" id="1_mwuiw"]
+[ext_resource type="PackedScene" uid="uid://id75m5q4t5ga" path="res://Assets/ui.tscn" id="1_uc0f2"]
+[ext_resource type="PackedScene" uid="uid://c2ybwhakexc6j" path="res://Assets/Paddle/paddle_controller.tscn" id="2_disvp"]
+[ext_resource type="Texture2D" uid="uid://dssdoid3hbi0d" path="res://Assets/Images/bg.jpg" id="2_v27gq"]
+[ext_resource type="PackedScene" uid="uid://djj8j6o0w8386" path="res://Assets/Border.tscn" id="4_cuaoi"]
+[ext_resource type="PackedScene" uid="uid://bxoq0ug0n5lgs" path="res://Assets/Ball/ball_body.tscn" id="5_uf8eb"]
+[ext_resource type="Texture2D" uid="uid://juiob8lgj1sm" path="res://Assets/separator.png" id="6_vic1v"]
+
+[node name="Pong" type="Node2D"]
+script = ExtResource("1_mwuiw")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_v27gq")
+
+[node name="UI" parent="CanvasLayer/TextureRect" instance=ExtResource("1_uc0f2")]
+layout_mode = 1
+
+[node name="Left" parent="." instance=ExtResource("2_disvp")]
+playercolor = Color(0.266667, 0.486275, 1, 1)
+
+[node name="Right" parent="." instance=ExtResource("2_disvp")]
+PlayerPaddle = 1
+playercolor = Color(0.996078, 0, 0, 1)
+
+[node name="Border" type="Node2D" parent="."]
+
+[node name="TopBorder" parent="Border" instance=ExtResource("4_cuaoi")]
+
+[node name="BottomBorder" parent="Border" instance=ExtResource("4_cuaoi")]
+
+[node name="BallBody" parent="." instance=ExtResource("5_uf8eb")]
+
+[node name="Separator" type="Sprite2D" parent="."]
+texture = ExtResource("6_vic1v")

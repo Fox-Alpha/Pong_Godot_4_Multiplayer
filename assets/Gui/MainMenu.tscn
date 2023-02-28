@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3 uid="uid://cds6jx3u4sspi"]
+
+[ext_resource type="Texture2D" uid="uid://dssdoid3hbi0d" path="res://Assets/Images/bg.jpg" id="1_sbje1"]
+[ext_resource type="Script" path="res://Assets/Gui/Menu.gd" id="2_c24qy"]
+[ext_resource type="PackedScene" uid="uid://cxlbgnsgq72bu" path="res://Assets/Gui/GameSettingsView.tscn" id="5_qr1oj"]
+[ext_resource type="PackedScene" uid="uid://dho78405jgdv2" path="res://Assets/Gui/MainMenuView.tscn" id="5_xpei7"]
+[ext_resource type="PackedScene" uid="uid://cwp4lb4bp4ghb" path="res://Assets/Gui/StartGameView.tscn" id="6_1wo5n"]
+
+[node name="MainMenu" type="Node"]
+
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_sbje1")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("2_c24qy")
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/CenterContainer"]
+layout_mode = 2
+
+[node name="MenuContainer" type="PanelContainer" parent="CanvasLayer/CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/CenterContainer/HBoxContainer/MenuContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="MainMenuView" parent="CanvasLayer/CenterContainer/HBoxContainer/MenuContainer/MarginContainer" node_paths=PackedStringArray("maingamemenu", "startnewgamemenu", "settingsmenu") instance=ExtResource("5_xpei7")]
+layout_mode = 2
+maingamemenu = NodePath(".")
+startnewgamemenu = NodePath("../StartNewGameView")
+settingsmenu = NodePath("../GameSettingsView")
+
+[node name="StartNewGameView" parent="CanvasLayer/CenterContainer/HBoxContainer/MenuContainer/MarginContainer" node_paths=PackedStringArray("backbuttonmenu") instance=ExtResource("6_1wo5n")]
+visible = false
+layout_mode = 2
+backbuttonmenu = NodePath("../MainMenuView")
+
+[node name="GameSettingsView" parent="CanvasLayer/CenterContainer/HBoxContainer/MenuContainer/MarginContainer" node_paths=PackedStringArray("backbuttonmenu") instance=ExtResource("5_qr1oj")]
+visible = false
+layout_mode = 2
+backbuttonmenu = NodePath("../MainMenuView")

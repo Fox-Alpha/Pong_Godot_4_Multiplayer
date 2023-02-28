@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://dho78405jgdv2"]
+
+[ext_resource type="Script" path="res://Assets/Gui/MainMenuView.gd" id="1_n5cuu"]
+
+[node name="MainMenuView" type="VBoxContainer"]
+theme_override_constants/separation = 8
+script = ExtResource("1_n5cuu")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 48
+text = "Game Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonStart" type="Button" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 30
+text = "Start Game"
+
+[node name="ButtonSettings" type="Button" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 30
+text = "Settings"
+
+[node name="ButtonQuit" type="Button" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 30
+text = "Quit"
+
+[connection signal="pressed" from="ButtonStart" to="." method="_on_button_start_pressed"]
+[connection signal="pressed" from="ButtonSettings" to="." method="_on_button_settings_pressed"]
+[connection signal="pressed" from="ButtonQuit" to="." method="_on_button_quit_pressed"]

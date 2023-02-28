@@ -32,10 +32,10 @@ func _physics_process(delta):
 
 func _reset_position():
 	var screensize = get_viewport_rect()
-
+	
 	# Paddle Positionen
 	match PlayerPaddle:
 		0:
-			position = Vector2(10, screensize.size.y/2)
+			position = Vector2(10, screensize.size.y/2)			
 		1:
 			position = Vector2(screensize.size.x-10, screensize.size.y/2)

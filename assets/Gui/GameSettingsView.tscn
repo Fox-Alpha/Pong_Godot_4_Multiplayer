@@ -1,0 +1,71 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxlbgnsgq72bu"]
+
+[ext_resource type="Script" path="res://Assets/Gui/GameSettingsView.gd" id="1_7i28f"]
+
+[node name="GameSettingsView" type="VBoxContainer"]
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+script = ExtResource("1_7i28f")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelGameSetting" type="Label" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
+text = "Game_Settings_Here"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelGameSetting_2" type="Label" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
+text = "Game_Settings_Here"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelGameSetting_3" type="Label" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
+text = "Game_Settings_Here"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelGameSetting_4" type="Label" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
+text = "Game_Settings_Here"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelGameSetting_5" type="Label" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
+text = "Game_Settings_Here"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelGameSetting_6" type="Label" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
+text = "Game_Settings_Here"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonSettingsBack" type="Button" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Back To Mainmenu"
+
+[connection signal="pressed" from="ButtonSettingsBack" to="." method="_on_button_settings_back_pressed"]

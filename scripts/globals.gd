@@ -10,7 +10,7 @@ var hasGamestartet : bool = false
 var waitForNextRound : bool = false
 var isMultiplayerGame : bool = false
 
-var GameScene : PackedScene = preload("res://scenes/pong.tscn")
+var GameScene : PackedScene = preload("res://Scenes/Pong_40.tscn")
 
 var playerdic : Dictionary = {"player1":"", "player2":"", "Rounds":1}
 
