@@ -23,7 +23,7 @@ func _on_button_start_pressed():
 	var p2 = %EditPlayer2Name.text
 	var colors:Array[Color]
 	var score:int
-	var rounds:int	
+	var rounds:int
 
 	if(%EditLocalMaxPointsPerRound.text.is_valid_int()):
 		score = %EditLocalMaxPointsPerRound.text.to_int()
@@ -38,10 +38,10 @@ func _on_button_start_pressed():
 	if(p2.is_empty()): p2 = "Player2"
 	if(score <=0) : score = 10
 	if(rounds <=0) : rounds = 3
-	
+
 #	Game.update_player_dict(p1, p2)
 	Game.update_player_dict(p1, p2, score, rounds, colors)
-	
+
 	get_tree().change_scene_to_packed(Game.GameScene)
 	pass # Replace with function body.
 
