@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-run/main_scene="res://Assets/Gui/MainMenu.tscn"
 config/name="Pong_Godot_4_Multiplayer"
+run/main_scene="uid://cds6jx3u4sspi"
 config/features=PackedStringArray("4.4", "Forward Plus")
 boot_splash/show_image=false
 boot_splash/image="res://Assets/Images/th-intro.png"
