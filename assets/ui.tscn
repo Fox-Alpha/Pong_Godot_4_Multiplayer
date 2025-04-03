@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b83gul6dnaceu"]
 
-[ext_resource type="Theme" path="res://assets/resources/pong_ui_theme.tres" id="1_j5v2s"]
-[ext_resource type="Script" path="res://scripts/ui.gd" id="1_t2nfm"]
+[ext_resource type="Theme" uid="uid://bichyo3bvxum0" path="res://assets/resources/pong_ui_theme.tres" id="1_j5v2s"]
+[ext_resource type="Script" uid="uid://b7q3yerjsm3io" path="res://scripts/ui.gd" id="1_t2nfm"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
