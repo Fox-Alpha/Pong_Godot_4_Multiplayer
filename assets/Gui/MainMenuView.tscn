@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dho78405jgdv2"]
 
-[ext_resource type="Script" path="res://Assets/Gui/MainMenuView.gd" id="1_n5cuu"]
+[ext_resource type="Script" uid="uid://bpt5a3xl1keo3" path="res://Assets/Gui/MainMenuView.gd" id="1_n5cuu"]
 
 [node name="MainMenuView" type="VBoxContainer"]
 theme_override_constants/separation = 8
