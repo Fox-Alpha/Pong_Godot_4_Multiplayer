@@ -22,7 +22,7 @@ func _process(_delta):
 
 
 func _on_button_start_hot_seat_pressed():
-	get_tree().change_scene_to_file("res://Pong_40.tscn")
+	get_tree().change_scene_to_file("res://scenes/Pong_40.tscn")
 
 
 func _on_button_multiplayer_options_pressed():
