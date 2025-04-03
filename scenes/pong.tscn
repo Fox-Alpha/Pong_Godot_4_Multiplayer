@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dkc3vognpleb1"]
 
-[ext_resource type="Script" uid="uid://cmbqc0e12ssys" path="res://Scripts/pong.gd" id="1_mwuiw"]
+[ext_resource type="Script" uid="uid://cmbqc0e12ssys" path="res://scripts/pong.gd" id="1_mwuiw"]
 [ext_resource type="PackedScene" uid="uid://b83gul6dnaceu" path="res://assets/ui.tscn" id="1_uc0f2"]
 [ext_resource type="Texture2D" uid="uid://bjd3rof1dft22" path="res://assets/images/bg.jpg" id="2_p24oy"]
 [ext_resource type="PackedScene" uid="uid://djj8j6o0w8386" path="res://assets/Border.tscn" id="4_cuaoi"]
