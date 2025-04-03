@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cds6jx3u4sspi"]
+[gd_scene load_steps=7 format=3 uid="uid://cds6jx3u4sspi"]
 
 [ext_resource type="Texture2D" uid="uid://dssdoid3hbi0d" path="res://assets/images/bg.jpg" id="1_sbje1"]
 [ext_resource type="Script" uid="uid://dot8fil6lsidc" path="res://assets/Gui/Menu.gd" id="2_c24qy"]
+[ext_resource type="PackedScene" uid="uid://d2eurus3brfdy" path="res://assets/Gui/MainView.tscn" id="3_r15pg"]
 [ext_resource type="PackedScene" uid="uid://cxlbgnsgq72bu" path="res://assets/Gui/GameSettingsView.tscn" id="5_qr1oj"]
 [ext_resource type="PackedScene" uid="uid://dho78405jgdv2" path="res://assets/Gui/MainMenuView.tscn" id="5_xpei7"]
 [ext_resource type="PackedScene" uid="uid://cwp4lb4bp4ghb" path="res://assets/Gui/StartGameView.tscn" id="6_1wo5n"]
@@ -40,7 +41,11 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
+[node name="Main" parent="CanvasLayer/CenterContainer/HBoxContainer/MenuContainer/MarginContainer" instance=ExtResource("3_r15pg")]
+layout_mode = 2
+
 [node name="MainMenuView" parent="CanvasLayer/CenterContainer/HBoxContainer/MenuContainer/MarginContainer" node_paths=PackedStringArray("maingamemenu", "startnewgamemenu", "settingsmenu") instance=ExtResource("5_xpei7")]
+visible = false
 layout_mode = 2
 maingamemenu = NodePath(".")
 startnewgamemenu = NodePath("../StartNewGameView")
