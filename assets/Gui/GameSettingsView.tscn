@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cxlbgnsgq72bu"]
 
-[ext_resource type="Script" uid="uid://bwp8u3ybbtlhp" path="res://Assets/Gui/GameSettingsView.gd" id="1_7i28f"]
+[ext_resource type="Script" uid="uid://bwp8u3ybbtlhp" path="res://assets/Gui/GameSettingsView.gd" id="1_7i28f"]
 
 [node name="GameSettingsView" type="VBoxContainer"]
 size_flags_horizontal = 3
