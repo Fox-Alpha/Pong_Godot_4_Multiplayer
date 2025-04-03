@@ -1,12 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://dkc3vognpleb1"]
+[gd_scene load_steps=10 format=3 uid="uid://dkc3vognpleb1"]
 
-[ext_resource type="Script" path="res://Scripts/pong.gd" id="1_mwuiw"]
-[ext_resource type="PackedScene" uid="uid://id75m5q4t5ga" path="res://Assets/ui.tscn" id="1_uc0f2"]
-[ext_resource type="PackedScene" uid="uid://c2ybwhakexc6j" path="res://Assets/Paddle/paddle_controller.tscn" id="2_disvp"]
-[ext_resource type="Texture2D" uid="uid://dssdoid3hbi0d" path="res://Assets/Images/bg.jpg" id="2_v27gq"]
-[ext_resource type="PackedScene" uid="uid://djj8j6o0w8386" path="res://Assets/Border.tscn" id="4_cuaoi"]
-[ext_resource type="PackedScene" uid="uid://bxoq0ug0n5lgs" path="res://Assets/Ball/ball_body.tscn" id="5_uf8eb"]
-[ext_resource type="Texture2D" uid="uid://juiob8lgj1sm" path="res://Assets/separator.png" id="6_vic1v"]
+[ext_resource type="Script" uid="uid://tja8mavrgl1p" path="res://scripts/pong.gd" id="1_mwuiw"]
+[ext_resource type="PackedScene" uid="uid://id75m5q4t5ga" path="res://assets/ui.tscn" id="1_uc0f2"]
+[ext_resource type="PackedScene" uid="uid://c2ybwhakexc6j" path="res://assets/paddle/paddle_controller.tscn" id="2_disvp"]
+[ext_resource type="Texture2D" uid="uid://dssdoid3hbi0d" path="res://assets/images/bg.jpg" id="2_v27gq"]
+[ext_resource type="PackedScene" uid="uid://djj8j6o0w8386" path="res://assets/Border.tscn" id="4_cuaoi"]
+[ext_resource type="PackedScene" uid="uid://bxoq0ug0n5lgs" path="res://assets/ball/ball_body.tscn" id="5_uf8eb"]
+[ext_resource type="Texture2D" uid="uid://juiob8lgj1sm" path="res://assets/separator.png" id="6_vic1v"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0xy4s"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_2wuhs"]
 
 [node name="Pong" type="Node2D"]
 script = ExtResource("1_mwuiw")
@@ -60,9 +64,31 @@ texture = ExtResource("6_vic1v")
 
 [node name="Left" parent="Paddles" instance=ExtResource("2_disvp")]
 unique_name_in_owner = true
+SPEED = 600.0
 playercolor = Color(0, 0.72549, 0.945098, 1)
 
 [node name="Right" parent="Paddles" instance=ExtResource("2_disvp")]
 unique_name_in_owner = true
+SPEED = 600.0
 PlayerPaddle = 1
 playercolor = Color(0.730376, 0.219538, 0.191373, 1)
+
+[node name="Debug" type="Node" parent="."]
+
+[node name="DbgLeft" type="StaticBody2D" parent="Debug"]
+position = Vector2(25, 0)
+rotation = 1.5708
+physics_material_override = SubResource("PhysicsMaterial_0xy4s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Debug/DbgLeft"]
+shape = SubResource("WorldBoundaryShape2D_2wuhs")
+disabled = true
+
+[node name="DbgRight" type="StaticBody2D" parent="Debug"]
+position = Vector2(1434, 0)
+rotation = -1.5708
+physics_material_override = SubResource("PhysicsMaterial_0xy4s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Debug/DbgRight"]
+shape = SubResource("WorldBoundaryShape2D_2wuhs")
+disabled = true

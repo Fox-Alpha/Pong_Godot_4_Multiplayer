@@ -14,6 +14,12 @@ var GameScene : PackedScene = preload("res://Scenes/Pong_40.tscn")
 
 var playerdic : Dictionary = {"player1":"", "player2":"", "Rounds":1}
 
+var DebugControl : Control :
+	set (value):
+		DebugControl = value
+	get:
+		return DebugControl
+
 ##### Beispiel Setter / Getter
 #var sprite_offset : Vector2 = Vector2.ZERO :
 #	set (value):

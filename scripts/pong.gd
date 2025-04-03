@@ -2,7 +2,12 @@ extends Node2D
 
 @onready var top = $Border/TopBorder/BorderCollision
 @onready var bottom = $Border/BottomBorder/BorderCollision
-
+@export var DebugBoundarys : bool = false :
+	set(value):
+		DebugBoundarys = value
+		EnableBoundarys(value)
+	get:
+		return DebugBoundarys
 
 
 # Called when the node enters the scene tree for the first time.
@@ -87,3 +92,14 @@ func HandleGameState():
 		if(Game.waitForNextRound):
 			Game.waitForNextRound = false
 			Game.emit_signal("Next_Round_Started")
+
+func EnableBoundarys(value) -> void :
+	if is_inside_tree():
+		var dbg = get_tree().current_scene.get_node("Debug/DbgLeft/CollisionShape2D")
+	#$"../Debug/DbgLeft/CollisionShape2D"
+		dbg.set("disabled", !value)
+		dbg = get_tree().current_scene.get_node("Debug/DbgRight/CollisionShape2D")
+		dbg.set("disabled", !value)
+	
+	pass
+	
