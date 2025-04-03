@@ -4,18 +4,21 @@
 [ext_resource type="Texture2D" uid="uid://127y56p5blew" path="res://assets/ball/ball.png" id="2_mq5ia"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r41i7"]
-radius = 4.0
+radius = 5.0
 
 [node name="BallBody" type="CharacterBody2D"]
+physics_interpolation_mode = 1
+motion_mode = 1
 script = ExtResource("1_7cdgs")
 
 [node name="Ball" type="Sprite2D" parent="."]
-texture = ExtResource("2_mq5ia")
+texture = ExtResource("1_ugjkt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_r41i7")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-scale = Vector2(0.6, 0.6)
+position = Vector2(0, -5.96046e-08)
+scale = Vector2(0.4, 0.4)
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

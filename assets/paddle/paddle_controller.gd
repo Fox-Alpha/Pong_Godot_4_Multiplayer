@@ -13,7 +13,7 @@ func _ready():
 
 
 func _process(_delta):
-	$Paddle.self_modulate = playercolor
+	
 	pass
 
 
@@ -32,10 +32,12 @@ func _physics_process(delta):
 
 func _reset_position():
 	var screensize = get_viewport_rect()
-
+	
 	# Paddle Positionen
 	match PlayerPaddle:
 		0:
 			position = Vector2(10, screensize.size.y/2)
 		1:
 			position = Vector2(screensize.size.x-10, screensize.size.y/2)
+	var col = Game.get_playercolor(PlayerPaddle)
+	$Paddle.self_modulate = col
