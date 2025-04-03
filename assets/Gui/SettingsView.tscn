@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://1bdvwtwqtf8f"]
 
-[ext_resource type="Theme" uid="uid://wvu4pacnfwqt" path="res://Assets/Resouces/ui_theme.tres" id="1_fe3br"]
-[ext_resource type="Script" path="res://Assets/Gui/SettingsView.gd" id="2_75txi"]
+[ext_resource type="Theme" uid="uid://wvu4pacnfwqt" path="res://assets/resources/ui_theme.tres" id="1_fe3br"]
+[ext_resource type="Script" uid="uid://de4gsfosua7h8" path="res://Assets/Gui/SettingsView.gd" id="2_75txi"]
 
 [node name="Settings" type="Control"]
 visible = false

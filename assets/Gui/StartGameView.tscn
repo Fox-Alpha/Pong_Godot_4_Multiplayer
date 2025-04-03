@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cwp4lb4bp4ghb"]
 
-[ext_resource type="Script" path="res://Assets/Gui/StartGameView.gd" id="1_02p71"]
+[ext_resource type="Script" uid="uid://dl26g2bmsyhkn" path="res://assets/Gui/StartGameView.gd" id="1_02p71"]
 
 [node name="StartGameView" type="VBoxContainer"]
 custom_minimum_size = Vector2(0, 350)
@@ -14,11 +14,13 @@ custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 tab_alignment = 1
+current_tab = 0
 
 [node name="StartLocalGame" type="PanelContainer" parent="TabContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(512, 0)
 layout_mode = 2
+metadata/_tab_index = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/StartLocalGame"]
 layout_mode = 2
@@ -177,6 +179,7 @@ text = "Start Game
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
+metadata/_tab_index = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/MultiplayerClient"]
 layout_mode = 2
@@ -264,6 +267,7 @@ unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(512, 0)
 layout_mode = 2
+metadata/_tab_index = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/MultiplayerHost"]
 layout_mode = 2
