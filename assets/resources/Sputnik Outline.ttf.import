@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://bsqwjehokromc"
-path="res://.godot/imported/Sputnik Outline.ttf-578224ba97133552838f6907fe5691cc.fontdata"
+uid="uid://c26yjyciy7adt"
+path="res://.godot/imported/Sputnik Outline.ttf-77f97672d8eb8b6eb404b6f15eced4c9.fontdata"
 
 [deps]
 
-source_file="res://assets/Resouces/Sputnik Outline.ttf"
-dest_files=["res://.godot/imported/Sputnik Outline.ttf-578224ba97133552838f6907fe5691cc.fontdata"]
+source_file="res://assets/resources/Sputnik Outline.ttf"
+dest_files=["res://.godot/imported/Sputnik Outline.ttf-77f97672d8eb8b6eb404b6f15eced4c9.fontdata"]
 
 [params]
 
