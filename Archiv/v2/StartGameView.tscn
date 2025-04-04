@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cwp4lb4bp4ghb"]
 
 [ext_resource type="Script" uid="uid://dl26g2bmsyhkn" path="res://assets/Gui/StartGameView.gd" id="1_02p71"]
-[ext_resource type="Theme" uid="uid://wvu4pacnfwqt" path="res://assets/resources/ui_theme.tres" id="1_j3b61"]
+[ext_resource type="Theme" uid="uid://wvu4pacnfwqt" path="res://resources/ui_theme.tres" id="1_j3b61"]
 
 [node name="StartGameView" type="VBoxContainer"]
 custom_minimum_size = Vector2(0, 350)
