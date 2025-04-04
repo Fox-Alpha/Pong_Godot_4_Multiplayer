@@ -12,9 +12,9 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Game.connect("Left_Player_Scored", Score, CONNECT_DEFERRED)
-	Game.connect("Right_Player_Scored", Score, CONNECT_DEFERRED)
-	Game.connect("Game_Is_over", Game_Is_over, CONNECT_DEFERRED)
+	Game.Left_Player_Scored.connect(Score, CONNECT_DEFERRED)
+	Game.Right_Player_Scored.connect(Score, CONNECT_DEFERRED)
+	Game.Game_Is_over.connect(Game_Is_over, CONNECT_DEFERRED)
 
 	start()
 
