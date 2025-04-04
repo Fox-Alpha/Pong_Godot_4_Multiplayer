@@ -96,10 +96,7 @@ func HandleGameState():
 func EnableBoundarys(value) -> void :
 	if is_inside_tree():
 		var dbg = get_tree().current_scene.get_node("Debug/DbgLeft/CollisionShape2D")
-	#$"../Debug/DbgLeft/CollisionShape2D"
 		dbg.set("disabled", !value)
 		dbg = get_tree().current_scene.get_node("Debug/DbgRight/CollisionShape2D")
 		dbg.set("disabled", !value)
-	
 	pass
-	
