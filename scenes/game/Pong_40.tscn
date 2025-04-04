@@ -14,7 +14,6 @@
 
 [node name="Pong" type="Node2D"]
 script = ExtResource("1_lqc4h")
-DebugBoundarys = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
@@ -74,22 +73,22 @@ SPEED = 600.0
 PlayerPaddle = 1
 playercolor = Color(0.730376, 0.219538, 0.191373, 1)
 
-[node name="Debug" type="Node" parent="."]
+[node name="DebugBoundarys" type="Node" parent="."]
 
-[node name="DbgLeft" type="StaticBody2D" parent="Debug"]
+[node name="DbgLeft" type="StaticBody2D" parent="DebugBoundarys" groups=["DebugBoundarys"]]
 position = Vector2(25, 0)
 rotation = 1.5708
 physics_material_override = SubResource("PhysicsMaterial_0xy4s")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Debug/DbgLeft"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DebugBoundarys/DbgLeft"]
 shape = SubResource("WorldBoundaryShape2D_2wuhs")
 disabled = true
 
-[node name="DbgRight" type="StaticBody2D" parent="Debug"]
+[node name="DbgRight" type="StaticBody2D" parent="DebugBoundarys" groups=["DebugBoundarys"]]
 position = Vector2(1434, 0)
 rotation = -1.5708
 physics_material_override = SubResource("PhysicsMaterial_0xy4s")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Debug/DbgRight"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DebugBoundarys/DbgRight"]
 shape = SubResource("WorldBoundaryShape2D_2wuhs")
 disabled = true
