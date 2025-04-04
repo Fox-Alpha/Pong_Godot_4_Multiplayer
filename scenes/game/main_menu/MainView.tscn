@@ -620,3 +620,6 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 23
 text = "Back To Mainmenu"
+
+[connection signal="pressed" from="MainMenuView/MarginContainer/VBoxContainer/PanelContainer_MenuButtons/VBoxContainer/ButtonStart" to="." method="_on_button_start_pressed"]
+[connection signal="pressed" from="MainMenuView/MarginContainer/VBoxContainer/PanelContainer_MenuButtons/VBoxContainer/StartOptions/VBoxContainer/PanelLocalHotseat/MarginContainer/VBoxContainer/ButtonStartHotSeat" to="." method="_on_button_start_hot_seat_pressed"]

@@ -13,35 +13,29 @@ extends Control
 ## TODO: Move ButtonPressed events here
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
-	preload("res://scenes/game/playground/ball/ball_body.tscn")
-	pass # Replace with function body.
+#func _ready():
+	#preload("res://scenes/game/playground/ball/ball_body.tscn")
+	#pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
+#func _process(_delta):
+	#pass
 
 
 func _on_button_start_hot_seat_pressed():
-	get_tree().change_scene_to_file("res://scenes/Pong_40.tscn")
+	var err = get_tree().change_scene_to_file("res://scenes/game/Pong_40.tscn")
+	if err != OK:
+		print("Fehler bim laden der Szene: %s" % error_string(err))
+	#ToDo: Switch to Local Game Options before starting
+	pass
 	
 
 
 func _on_button_multiplayer_options_pressed():
+	#ToDo: Switch to Multiplayer Game Options before starting
 	pass
 
-
-func _on_button_join_server_pressed():
-	#multiplayer_client.visible = true
-	#multiplayer_host.visible = false
-	pass
-
-
-func _on_button_create_server_pressed():
-	#multiplayer_host.visible = true
-	#multiplayer_client.visible = false
-	pass
 
 func _on_button_start_pressed():
 	start_options.visible = !start_options.visible
