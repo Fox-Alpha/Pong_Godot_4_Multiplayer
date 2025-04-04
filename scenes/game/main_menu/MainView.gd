@@ -14,7 +14,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	preload("res://assets/ball/ball_body.tscn")
+	preload("res://scenes/game/playground/ball/ball_body.tscn")
 	pass # Replace with function body.
 
 
