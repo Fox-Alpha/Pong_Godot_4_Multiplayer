@@ -41,6 +41,10 @@ naming/scene_name_casing=1
 import/blender/enabled=false
 import/fbx/enabled=false
 
+[global_group]
+
+DebugBoundarys=""
+
 [gui]
 
 theme/custom="uid://wvu4pacnfwqt"
