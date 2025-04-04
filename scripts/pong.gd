@@ -31,44 +31,51 @@ func Game_Is_over(_ply):
 func start():
 	var screensize = get_viewport_rect()
 
-	# Paddle Positionen
+	#region Paddle Positionen
 	%Left.position = Vector2(10, screensize.size.y/2)
 	%Right.position = Vector2(screensize.size.x-10, screensize.size.y/2)
+	#endregion
 
-	# Optische Mittellinie an ScreenSize anpassen
-	%Separator_Middle.position = screensize.get_center()
-	var sizeto=Vector2(5,screensize.size.y-100)
-	var size=%Separator_Middle.texture.get_size()
-	var scalevactor=sizeto/size
-	%Separator_Middle.scale = scalevactor
-	
-	# Obere Linie
+	#region Obere Linie
 	%Separator_Top.position.x = screensize.get_center().x
 	%Separator_Top.position.y = 120
 	var sizetoTOP=Vector2(5, screensize.size.x)
 	var sizeTOP=%Separator_Top.texture.get_size()
 	var scalevactorTOP=sizetoTOP/sizeTOP
 	%Separator_Top.scale = scalevactorTOP
-	
-	# Untere Linie
+	#endregion
+
+	#region Untere Linie
 	%Separator_Bottom.position.x = screensize.get_center().x
 	%Separator_Bottom.position.y = screensize.size.y-60
 	var sizetoBOT=Vector2(5, screensize.size.x)
 	var sizeBOT=%Separator_Bottom.texture.get_size()
 	var scalevactorBOT=sizetoBOT/sizeBOT
 	%Separator_Bottom.scale = scalevactorBOT
+	#endregion
 
-	# Top Border an Screensize anpassen
+	#region Optische Mittellinie an ScreenSize anpassen
+	var pgheight : int = %Separator_Bottom.position.y - %Separator_Top.position.y
+	%Separator_Middle.position = Vector2(screensize.get_center().x, %Separator_Top.position.y)
+	var sizeto=Vector2(5, pgheight)
+	var size=%Separator_Middle.texture.get_size()
+	var scalevactor=sizeto/size
+	%Separator_Middle.scale = scalevactor
+	#endregion
+
+	#region Top Border an Screensize anpassen
 	top.shape.size.x = screensize.size.x
 	top.shape.size.y = 20
 	$Border/TopBorder.position.x = screensize.get_center().x
 	$Border/TopBorder.position.y = 100
+	#endregion
 
-	# Bottom Border an Screensize anpassen
+	#region Bottom Border an Screensize anpassen
 	bottom.shape.size.x = screensize.size.x
 	bottom.shape.size.y = 20
 	$Border/BottomBorder.position.x = screensize.get_center().x
 	$Border/BottomBorder.position.y = screensize.size.y-40
+	#endregion
 
 
 func _input(event):
