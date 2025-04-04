@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b7dn5vx2kq541" path="res://assets/ball/ball.png" id="2_mq5ia"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r41i7"]
-radius = 5.0
+radius = 6.0
 
 [node name="BallBody" type="CharacterBody2D"]
 physics_interpolation_mode = 1
@@ -12,6 +12,7 @@ motion_mode = 1
 script = ExtResource("1_7cdgs")
 
 [node name="Ball" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_mq5ia")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
