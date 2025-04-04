@@ -15,8 +15,8 @@ func _ready():
 	Game.Left_Player_Scored.connect(Score, CONNECT_DEFERRED)
 	Game.Right_Player_Scored.connect(Score, CONNECT_DEFERRED)
 	Game.Game_Is_over.connect(Game_Is_over, CONNECT_DEFERRED)
-
 	start()
+
 
 func Score(_score :int):
 	Game.waitForNextRound = true
@@ -26,6 +26,7 @@ func Game_Is_over(_ply):
 	Game.hasGamestartet = false
 	Game.p1_score = 0
 	Game.p2_score = 0
+
 
 func start():
 	var screensize = get_viewport_rect()
@@ -43,7 +44,7 @@ func start():
 	
 	# Obere Linie
 	%Separator_Top.position.x = screensize.get_center().x
-	%Separator_Top.position.y = 60
+	%Separator_Top.position.y = 120
 	var sizetoTOP=Vector2(5, screensize.size.x)
 	var sizeTOP=%Separator_Top.texture.get_size()
 	var scalevactorTOP=sizetoTOP/sizeTOP
@@ -61,7 +62,7 @@ func start():
 	top.shape.size.x = screensize.size.x
 	top.shape.size.y = 20
 	$Border/TopBorder.position.x = screensize.get_center().x
-	$Border/TopBorder.position.y = 40
+	$Border/TopBorder.position.y = 100
 
 	# Bottom Border an Screensize anpassen
 	bottom.shape.size.x = screensize.size.x
@@ -92,6 +93,7 @@ func HandleGameState():
 		if(Game.waitForNextRound):
 			Game.waitForNextRound = false
 			Game.emit_signal("Next_Round_Started")
+
 
 func EnableBoundarys(value) -> void :
 	if is_inside_tree():
