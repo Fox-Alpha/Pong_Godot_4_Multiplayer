@@ -93,8 +93,9 @@ func _Game_Is_over(ply):
 
 
 func get_playercolor(ply:int) -> Color:
-	var col = playerdic["colors"][ply]
-	return col
+	#var col = playerdic["colors"][ply]
+	randomize()
+	return Color.from_rgba8(randi_range(0, 255), randi_range(0, 255), randi_range(0, 255))# col
 
 #func ScoreLeft(score : int):
 #	pass # Replace with function body.
