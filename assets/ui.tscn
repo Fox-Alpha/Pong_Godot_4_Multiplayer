@@ -1,6 +1,5 @@
-[gd_scene load_steps=4 format=3 uid="uid://id75m5q4t5ga"]
+[gd_scene load_steps=3 format=3 uid="uid://id75m5q4t5ga"]
 
-[ext_resource type="Theme" uid="uid://bichyo3bvxum0" path="res://assets/resources/pong_ui_theme.tres" id="1_o5g76"]
 [ext_resource type="Script" uid="uid://b7q3yerjsm3io" path="res://scripts/ui.gd" id="1_t2nfm"]
 [ext_resource type="Script" uid="uid://qc5f6sore7n8" path="res://debug.gd" id="3_rvqgq"]
 
@@ -12,7 +11,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme = ExtResource("1_o5g76")
 script = ExtResource("1_t2nfm")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -24,21 +22,26 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainer"]
 custom_minimum_size = Vector2(55, 0)
 layout_mode = 2
-theme_override_constants/margin_top = 2
-theme_override_constants/margin_bottom = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
-[node name="ColorRect" type="ColorRect" parent="VBoxContainer/MarginContainer"]
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
-color = Color(0.235294, 0.313726, 0.352941, 1)
+color = Color(0.235294, 0.411765, 0.745098, 1)
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 
-[node name="PlayerScoreLeft" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="PlayerScoreLeft" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
@@ -47,36 +50,36 @@ text = "00000"
 horizontal_alignment = 1
 max_lines_visible = 1
 
-[node name="Control" type="Control" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="Control" type="Control" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 
-[node name="LabelP1Name" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="LabelP1Name" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
 text = "P1"
 
-[node name="Label_vs" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="Label_vs" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "VS"
 horizontal_alignment = 1
 
-[node name="LabelP2Name" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="LabelP2Name" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
 text = "P2"
 
-[node name="Control_3" type="Control" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="Control_3" type="Control" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 
-[node name="PlayerScoreRight" type="Label" parent="VBoxContainer/MarginContainer/HBoxContainer"]
+[node name="PlayerScoreRight" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
@@ -90,21 +93,32 @@ max_lines_visible = 1
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CenterContainer"]
+[node name="PanelContainer_2" type="PanelContainer" parent="VBoxContainer/CenterContainer"]
 layout_mode = 2
 
-[node name="WinLabel" type="Label" parent="VBoxContainer/CenterContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/CenterContainer/PanelContainer_2"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CenterContainer/PanelContainer_2/MarginContainer"]
+layout_mode = 2
+
+[node name="WinLabel" type="Label" parent="VBoxContainer/CenterContainer/PanelContainer_2/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 32
 text = "Game Over"
 horizontal_alignment = 1
 
-[node name="StartLabel" type="Label" parent="VBoxContainer/CenterContainer/VBoxContainer"]
+[node name="StartLabel" type="Label" parent="VBoxContainer/CenterContainer/PanelContainer_2/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_type_variation = &"OptionenLabel"
+theme_override_font_sizes/font_size = 32
 text = "Press Any Key to start"
 horizontal_alignment = 1
 
