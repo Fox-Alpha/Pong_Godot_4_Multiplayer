@@ -3,10 +3,10 @@
 [ext_resource type="Script" uid="uid://tja8mavrgl1p" path="res://scripts/pong.gd" id="1_lqc4h"]
 [ext_resource type="Texture2D" uid="uid://dssdoid3hbi0d" path="res://assets/images/bg.jpg" id="2_ge3fp"]
 [ext_resource type="PackedScene" uid="uid://id75m5q4t5ga" path="res://scenes/game/ingame_ui/ui.tscn" id="3_j68dr"]
-[ext_resource type="PackedScene" uid="uid://djj8j6o0w8386" path="res://assets/Border.tscn" id="4_qjysl"]
-[ext_resource type="PackedScene" uid="uid://bxoq0ug0n5lgs" path="res://assets/ball/ball_body.tscn" id="5_n36fx"]
-[ext_resource type="Texture2D" uid="uid://juiob8lgj1sm" path="res://assets/separator.png" id="6_i3j2k"]
-[ext_resource type="PackedScene" uid="uid://c2ybwhakexc6j" path="res://assets/paddle/paddle_controller.tscn" id="7_w0kgx"]
+[ext_resource type="PackedScene" uid="uid://djj8j6o0w8386" path="res://scenes/game/playground/field/Border.tscn" id="4_qjysl"]
+[ext_resource type="PackedScene" uid="uid://bxoq0ug0n5lgs" path="res://scenes/game/playground/ball/ball_body.tscn" id="5_n36fx"]
+[ext_resource type="Texture2D" uid="uid://juiob8lgj1sm" path="res://scenes/game/playground/field/separator.png" id="6_i3j2k"]
+[ext_resource type="PackedScene" uid="uid://c2ybwhakexc6j" path="res://scenes/game/playground/paddle/paddle_controller.tscn" id="7_w0kgx"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0xy4s"]
 
