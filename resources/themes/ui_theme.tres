@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=18 format=4 uid="uid://wvu4pacnfwqt"]
 
-[ext_resource type="FontFile" uid="uid://ckkhwy7byh1jb" path="res://resources/Sputnik.ttf" id="1_72cre"]
+[ext_resource type="FontFile" uid="uid://ckkhwy7byh1jb" path="res://resources/fonts/Sputnik.ttf" id="1_72cre"]
 
 [sub_resource type="FontVariation" id="FontVariation_mlbvj"]
 base_font = ExtResource("1_72cre")
