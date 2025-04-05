@@ -24,10 +24,14 @@ func _ready():
 func New_Game_Started():
 	%PlayerScoreLeft.text = "00000"
 	%PlayerScoreRight.text = "00000"
-	%WinLabel.visible = false
-	%StartLabel.visible = false
-	%LabelP1Name.text = Game.playerdic["player1"]
-	%LabelP2Name.text = Game.playerdic["player2"]
+
+	var p : String = ""
+	p = Game.playerdic["player1"]
+	%LabelP1Name.text = p if (!p.is_empty()) else "P1"
+	
+	p = ""
+	p = Game.playerdic["player2"]
+	%LabelP1Name.text = p if (!p.is_empty()) else "P2"
 
 
 func Next_Round_Started():
