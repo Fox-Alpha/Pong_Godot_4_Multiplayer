@@ -1,6 +1,7 @@
 extends Control
 
-
+@onready var _game_messages: PanelContainer = %PanelContainer_GameMessages
+const ANYKEYMESSAGE : String ="Press Any Key to start"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -43,5 +44,11 @@ func ScoreRight(score : int):
 
 
 func Game_Is_over(player : String):
-	%WinLabel.text = "GameOver %s has won" % player
-	%WinLabel.visible = true
+	#%WinLabel.text = "GameOver %s has won" % player
+	#%WinLabel.visible = true
+	ShowGameMessage("GameOver %s has won" % player)
+
+func ShowGameMessage(message : String) -> void:
+	_game_messages.text = message
+	%PanelContainer_GameMessages
+	pass
