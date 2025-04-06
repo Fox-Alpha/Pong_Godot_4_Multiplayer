@@ -12,8 +12,8 @@ enum Player{
 @export var PlayerPaddle = Player.PLAYER_1
 @export_color_no_alpha var playercolor = DEFAULTCOLOR
 
-var PlayerLeftPosition : Vector2 = Vector2(10, get_viewport_rect().size.y/2)
-var PlayerRightPosition : Vector2 = Vector2(get_viewport_rect().size.x-10, get_viewport_rect().size.y/2)
+@onready var PlayerLeftPosition : Vector2 = Vector2(10, get_viewport_rect().size.y/2)
+@onready var PlayerRightPosition : Vector2 = Vector2(get_viewport_rect().size.x-10, get_viewport_rect().size.y/2)
 
 
 func _ready():
@@ -32,7 +32,7 @@ func _ready():
 	$Paddle.self_modulate = Game.get_playercolor(PlayerPaddle)
 
 func _physics_process(delta):
-	var direction
+	var direction : Vector2 = Vector2.ZERO
 	match PlayerPaddle:
 		Player.PLAYER_1:
 			direction = Vector2(0, Input.get_action_strength("p1_down") - Input.get_action_strength("p1_up"))
@@ -41,7 +41,9 @@ func _physics_process(delta):
 
 	if(direction):
 		direction = direction.normalized()
-		velocity = direction * SPEED * delta
+		var v = direction * SPEED * delta
+		velocity = v
+		#velocity = direction * SPEED * delta
 		move_and_collide(velocity)
 
 func _reset_position():
