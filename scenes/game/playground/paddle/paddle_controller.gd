@@ -5,7 +5,11 @@ const REDPLAYER : Color = Color.DARK_RED
 const DEFAULTCOLOR : Color = Color.WHITE
 
 @export_range(100.0,1000.0,10.0) var SPEED = 600.0
-@export_enum("PLAYER_1", "PLAYER_2") var PlayerPaddle = 0
+enum Player{
+	PLAYER_1,
+	PLAYER_2
+}
+@export var PlayerPaddle = Player.PLAYER_1
 @export_color_no_alpha var playercolor = DEFAULTCOLOR
 
 var PlayerLeftPosition : Vector2 = Vector2(10, get_viewport_rect().size.y/2)
@@ -30,10 +34,10 @@ func _ready():
 func _physics_process(delta):
 	var direction
 	match PlayerPaddle:
-		PlayerPaddle.PLAYER_1:
+		Player.PLAYER_1:
 			direction = Input.get_vector("", "", "p1_down", "p1_up")
 			#direction = Vector2(0, Input.get_action_strength("p1_down") - Input.get_action_strength("p1_up"))
-		PlayerPaddle.PLAYER_2:
+		Player.PLAYER_2:
 			direction = Vector2(0, Input.get_action_strength("p2_down") - Input.get_action_strength("p2_up"))
 
 	if(direction):
