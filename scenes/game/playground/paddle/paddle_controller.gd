@@ -13,6 +13,12 @@ var PlayerRightPosition : Vector2 = Vector2(get_viewport_rect().size.x-10, get_v
 
 
 func _ready():
+	Game.Game_Window_Size_Changed.connect(func(): 
+		PlayerLeftPosition = Vector2(10, get_viewport_rect().size.y/2)
+		PlayerRightPosition = Vector2(get_viewport_rect().size.x-10, get_viewport_rect().size.y/2)
+		_reset_position()
+	)
+
 	Game.connect("New_Game_Started", _reset_position, CONNECT_DEFERRED)
 	Game.connect("Next_Round_Started", _reset_position, CONNECT_DEFERRED)
 
