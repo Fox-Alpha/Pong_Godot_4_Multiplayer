@@ -35,8 +35,7 @@ func _physics_process(delta):
 	var direction
 	match PlayerPaddle:
 		Player.PLAYER_1:
-			direction = Input.get_vector("", "", "p1_down", "p1_up")
-			#direction = Vector2(0, Input.get_action_strength("p1_down") - Input.get_action_strength("p1_up"))
+			direction = Vector2(0, Input.get_action_strength("p1_down") - Input.get_action_strength("p1_up"))
 		Player.PLAYER_2:
 			direction = Vector2(0, Input.get_action_strength("p2_down") - Input.get_action_strength("p2_up"))
 
