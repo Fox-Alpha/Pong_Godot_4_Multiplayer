@@ -34,7 +34,7 @@ func New_Game_Started():
 	
 	p = ""
 	p = Game.playerdic["player2"]
-	%LabelP1Name.text = p if (!p.is_empty()) else "P2"
+	%LabelP2Name.text = p if (!p.is_empty()) else "P2"
 
 
 func Next_Round_Started():
