@@ -14,18 +14,12 @@
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_2wuhs"]
 
 [node name="Pong" type="Node2D"]
-z_as_relative = false
-y_sort_enabled = true
 script = ExtResource("1_lqc4h")
 DebugBoundarys = true
 
 [node name="Ingame_HUD" type="CanvasLayer" parent="."]
-layer = 100
 
 [node name="TextureRect" type="TextureRect" parent="Ingame_HUD"]
-z_index = -10
-z_as_relative = false
-y_sort_enabled = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -34,12 +28,8 @@ grow_vertical = 2
 texture = ExtResource("2_ge3fp")
 
 [node name="UI" parent="Ingame_HUD" instance=ExtResource("3_j68dr")]
-z_index = 100
-z_as_relative = false
-y_sort_enabled = true
 
 [node name="DebugControl" parent="Ingame_HUD" instance=ExtResource("7_ge3fp")]
-y_sort_enabled = true
 
 [node name="Playground" type="Node2D" parent="."]
 z_index = 1

@@ -3,8 +3,6 @@
 [ext_resource type="Script" uid="uid://qc5f6sore7n8" path="res://scenes/debug/debug.gd" id="1_8888n"]
 
 [node name="DebugControl" type="Control"]
-z_index = 1024
-z_as_relative = false
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 3
 anchors_preset = 12
