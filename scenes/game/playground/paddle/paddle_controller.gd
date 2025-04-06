@@ -12,8 +12,8 @@ enum Player{
 @export var PlayerPaddle = Player.PLAYER_1
 @export_color_no_alpha var playercolor = DEFAULTCOLOR
 
-@onready var PlayerLeftPosition : Vector2 = Vector2(10, get_viewport_rect().size.y/2)
-@onready var PlayerRightPosition : Vector2 = Vector2(get_viewport_rect().size.x-10, get_viewport_rect().size.y/2)
+@onready var PlayerRightPosition : Vector2 = Vector2(10, get_viewport_rect().size.y/2)
+@onready var PlayerLeftPosition : Vector2 = Vector2(get_viewport_rect().size.x-10, get_viewport_rect().size.y/2)
 
 
 func _ready():
@@ -30,6 +30,8 @@ func _ready():
 		playercolor = BLUEPLAYER if playercolor == DEFAULTCOLOR else REDPLAYER
 
 	$Paddle.self_modulate = Game.get_playercolor(PlayerPaddle)
+	_reset_position()
+
 
 func _physics_process(delta):
 	var direction : Vector2 = Vector2.ZERO
