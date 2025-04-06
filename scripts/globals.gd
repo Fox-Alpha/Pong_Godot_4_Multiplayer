@@ -49,6 +49,14 @@ signal Game_Is_over
 signal New_Game_Started
 signal Next_Round_Started
 #signal Update_Player_Dict(p1:String, p2:String,score:int,rounds:int)
+signal Game_Window_Size_Changed
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	Game_Is_over.connect( _Game_Is_over, CONNECT_DEFERRED)
+	get_tree().screen_resized.connect(func(): Game_Window_Size_Changed.emit())
+
 
 func _check_win_state():
 	if(MaxScore == p1_score):
@@ -66,9 +74,6 @@ func update_player_dict(p1:String, p2:String,score:int = 10,rounds:int = 3, colo
 		playerdic[roundname] = {"p1": 0, "p2":0, "won": "NONE"}
 	pass
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	Game_Is_over.connect( _Game_Is_over, CONNECT_DEFERRED)
 
 
 func _Game_Is_over(ply):
