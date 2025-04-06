@@ -1,7 +1,7 @@
 extends Node2D
 
-@onready var top = $Border/TopBorder/BorderCollision
-@onready var bottom = $Border/BottomBorder/BorderCollision
+@onready var top = %Borders/TopBorder/BorderCollision
+@onready var bottom = %Borders/BottomBorder/BorderCollision
 @export var DebugBoundarys : bool = false :
 	set(value):
 		DebugBoundarys = value
@@ -70,15 +70,15 @@ func start():
 	#region Top Border an Screensize anpassen
 	top.shape.size.x = screensize.size.x
 	top.shape.size.y = 20
-	$Border/TopBorder.position.x = screensize.get_center().x
-	$Border/TopBorder.position.y = 100
+	%Borders/TopBorder.position.x = screensize.get_center().x
+	%Borders/TopBorder.position.y = 100
 	#endregion
 
 	#region Bottom Border an Screensize anpassen
 	bottom.shape.size.x = screensize.size.x
 	bottom.shape.size.y = 20
-	$Border/BottomBorder.position.x = screensize.get_center().x
-	$Border/BottomBorder.position.y = screensize.size.y-40
+	%Borders/BottomBorder.position.x = screensize.get_center().x
+	%Borders/BottomBorder.position.y = screensize.size.y-40
 	#endregion
 
 
@@ -97,11 +97,11 @@ func _unhandled_key_input(_event):
 
 
 func HandleGameState():
-	if(!Game.hasGamestartet or Game.waitForNextRound):
+	if(!Game.hasGamestartet): # or Game.waitForNextRound):
 		if(!Game.hasGamestartet):
 			Game.hasGamestartet = true
 			Game.emit_signal("New_Game_Started")
-		if(Game.waitForNextRound):
+		if(Game.hasGamestartet  and Game.waitForNextRound):
 			Game.waitForNextRound = false
 			Game.emit_signal("Next_Round_Started")
 
