@@ -15,6 +15,10 @@ func _ready():
 	Game.Left_Player_Scored.connect(Score, CONNECT_DEFERRED)
 	Game.Right_Player_Scored.connect(Score, CONNECT_DEFERRED)
 	Game.Game_Is_over.connect(Game_Is_over, CONNECT_DEFERRED)
+
+	if DebugBoundarys:
+		EnableBoundarys(DebugBoundarys)
+	
 	start()
 
 
