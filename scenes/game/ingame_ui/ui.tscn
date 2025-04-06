@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://id75m5q4t5ga"]
+[gd_scene load_steps=2 format=3 uid="uid://id75m5q4t5ga"]
 
 [ext_resource type="Script" uid="uid://cvv6nm2otdpmj" path="res://scenes/game/ingame_ui/ui.gd" id="1_t2nfm"]
-[ext_resource type="Script" uid="uid://qc5f6sore7n8" path="res://scripts/debug.gd" id="3_rvqgq"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -23,6 +22,7 @@ grow_vertical = 2
 theme_override_constants/separation = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainer"]
@@ -93,20 +93,22 @@ max_lines_visible = 1
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="PanelContainer_2" type="PanelContainer" parent="VBoxContainer/CenterContainer"]
+[node name="PanelContainer_GameMessages" type="PanelContainer" parent="VBoxContainer/CenterContainer"]
+unique_name_in_owner = true
+visible = false
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/CenterContainer/PanelContainer_2"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/CenterContainer/PanelContainer_GameMessages"]
 layout_mode = 2
 theme_override_constants/margin_left = 25
 theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 25
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CenterContainer/PanelContainer_2/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CenterContainer/PanelContainer_GameMessages/MarginContainer"]
 layout_mode = 2
 
-[node name="WinLabel" type="Label" parent="VBoxContainer/CenterContainer/PanelContainer_2/MarginContainer/VBoxContainer"]
+[node name="WinLabel" type="Label" parent="VBoxContainer/CenterContainer/PanelContainer_GameMessages/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
@@ -114,28 +116,19 @@ theme_override_font_sizes/font_size = 32
 text = "Game Over"
 horizontal_alignment = 1
 
-[node name="StartLabel" type="Label" parent="VBoxContainer/CenterContainer/PanelContainer_2/MarginContainer/VBoxContainer"]
+[node name="StartLabel" type="Label" parent="VBoxContainer/CenterContainer/PanelContainer_GameMessages/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 theme_type_variation = &"OptionenLabel"
 theme_override_font_sizes/font_size = 32
 text = "Press Any Key to start"
 horizontal_alignment = 1
 
-[node name="DebugControl" type="Control" parent="VBoxContainer"]
+[node name="GameMessageLabel" type="Label" parent="VBoxContainer/CenterContainer/PanelContainer_GameMessages/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-script = ExtResource("3_rvqgq")
-
-[node name="Debug" type="Label" parent="VBoxContainer/DebugControl"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -23.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "DEBUG: "
+theme_type_variation = &"OptionenLabel"
+theme_override_font_sizes/font_size = 32
+text = "Press Any Key to start"
 horizontal_alignment = 1
