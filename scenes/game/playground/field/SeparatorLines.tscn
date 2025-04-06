@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://ydhpvy3ne5hs"]
+
+[ext_resource type="Script" uid="uid://dpy86yyiffv4i" path="res://scenes/game/playground/field/separator_lines.gd" id="1_fkfpm"]
+[ext_resource type="Texture2D" uid="uid://juiob8lgj1sm" path="res://scenes/game/playground/field/separator.png" id="1_let22"]
+
+[node name="SeparatorLines" type="Node2D" node_paths=PackedStringArray("TopLine", "MiddleLine", "BottomLine")]
+script = ExtResource("1_fkfpm")
+TopLine = NodePath("Separator_Top")
+MiddleLine = NodePath("Separator_Middle")
+BottomLine = NodePath("Separator_Bottom")
+
+[node name="Separator_Top" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+z_index = -1
+texture_filter = 1
+rotation = 1.5708
+texture = ExtResource("1_let22")
+
+[node name="Separator_Middle" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+z_index = -1
+texture = ExtResource("1_let22")
+centered = false
+
+[node name="Separator_Bottom" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+z_index = -1
+texture_filter = 1
+rotation = 1.5708
+texture = ExtResource("1_let22")
