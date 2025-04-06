@@ -68,15 +68,15 @@ func start():
 	#endregion
 
 	#region Top Border an Screensize anpassen
-	top.shape.size.x = screensize.size.x
-	top.shape.size.y = 20
-	%Borders/TopBorder.position.x = screensize.get_center().x
-	%Borders/TopBorder.position.y = 100
+	#top.shape.size.x = screensize.size.x
+	#top.shape.size.y = 20
+	%Borders/TopBorder.position = Vector2(screensize.get_center().x, 100)
+	#%Borders/TopBorder.position.y = 100
 	#endregion
 
 	#region Bottom Border an Screensize anpassen
-	bottom.shape.size.x = screensize.size.x
-	bottom.shape.size.y = 20
+	#bottom.shape.size.x = screensize.size.x
+	#bottom.shape.size.y = 20
 	%Borders/BottomBorder.position.x = screensize.get_center().x
 	%Borders/BottomBorder.position.y = screensize.size.y-40
 	#endregion
