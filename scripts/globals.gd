@@ -55,7 +55,7 @@ signal Game_Window_Size_Changed
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Game_Is_over.connect( _Game_Is_over, CONNECT_DEFERRED)
-	get_tree().screen_resized.connect(func(): Game_Window_Size_Changed.emit())
+	get_tree().get_root().size_changed.connect(func(): Game_Window_Size_Changed.emit())
 
 
 func _check_win_state():
