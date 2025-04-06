@@ -3,10 +3,10 @@
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_paf51"]
 bounce = 1.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7lwms"]
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_2su0r"]
 
 [node name="Border" type="StaticBody2D"]
 physics_material_override = SubResource("PhysicsMaterial_paf51")
 
 [node name="BorderCollision" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_7lwms")
+shape = SubResource("WorldBoundaryShape2D_2su0r")
