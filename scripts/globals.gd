@@ -50,6 +50,7 @@ signal New_Game_Started
 signal Next_Round_Started
 #signal Update_Player_Dict(p1:String, p2:String,score:int,rounds:int)
 signal Game_Window_Size_Changed
+signal Game_Reseted
 
 
 # Called when the node enters the scene tree for the first time.
