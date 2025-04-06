@@ -44,7 +44,7 @@ func _reset_position() -> void:
 	#endregion
 
 
-func ResetSeperatorLine(Seperator : Sprite2D, newPos : Vector2, sizeTo : Vector2, Pos : Positions = -1) -> void:
+func ResetSeperatorLine(Seperator : Sprite2D, newPos : Vector2, sizeTo : Vector2, Pos : Positions = Positions.NOTDEF) -> void:
 	if Pos < 0 or !is_instance_valid( Seperator) or sizeTo == Vector2.ZERO:
 		return
 
