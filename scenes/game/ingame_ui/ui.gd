@@ -5,15 +5,18 @@ extends Control
 
 
 const ANYKEYMESSAGE : String ="Press Any Key to start"
+const GAMEOVER : String ="Game Over"
+const NEXTROUND : String ="Next Round"
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Global Signals
-	Game.connect("Left_Player_Scored", ScoreLeft, CONNECT_DEFERRED)
-	Game.connect("Right_Player_Scored", ScoreRight, CONNECT_DEFERRED)
-	Game.connect("Game_Is_over", Game_Is_over, CONNECT_DEFERRED)
-	Game.connect("New_Game_Started", New_Game_Started, CONNECT_DEFERRED)
-	Game.connect("Next_Round_Started", Next_Round_Started, CONNECT_DEFERRED)
+	Game.Left_Player_Scored.connect(ScoreLeft, CONNECT_DEFERRED)
+	Game.Right_Player_Scored.connect(ScoreRight, CONNECT_DEFERRED)
+	Game.Game_Is_over.connect(Game_Is_over, CONNECT_DEFERRED)
+	Game.New_Game_Started.connect(New_Game_Started, CONNECT_DEFERRED)
+	Game.Next_Round_Started.connect(Next_Round_Started, CONNECT_DEFERRED)
 	######
 
 
@@ -35,19 +38,19 @@ func New_Game_Started():
 
 
 func Next_Round_Started():
-	%StartLabel.visible = false
+	_game_message_container.visible = false
 
 
 func ScoreLeft(score : int):
 	Game.p1_score += score
 	%PlayerScoreLeft.text = str(Game.p1_score)
-	%StartLabel.visible = true
+	#%StartLabel.visible = true
 
 
 func ScoreRight(score : int):
 	Game.p2_score += score
 	%PlayerScoreRight.text = str(Game.p2_score)
-	%StartLabel.visible = true
+	#%StartLabel.visible = true
 
 
 func Game_Is_over(player : String):
