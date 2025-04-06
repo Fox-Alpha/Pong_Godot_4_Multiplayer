@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://dkc3vognpleb1"]
+[gd_scene load_steps=11 format=3 uid="uid://dkc3vognpleb1"]
 
 [ext_resource type="Script" uid="uid://tja8mavrgl1p" path="res://scripts/pong.gd" id="1_lqc4h"]
 [ext_resource type="Texture2D" uid="uid://dssdoid3hbi0d" path="res://assets/images/bg.jpg" id="2_ge3fp"]
 [ext_resource type="PackedScene" uid="uid://id75m5q4t5ga" path="res://scenes/game/ingame_ui/ui.tscn" id="3_j68dr"]
+[ext_resource type="Script" uid="uid://qc5f6sore7n8" path="res://scripts/debug.gd" id="4_ge3fp"]
 [ext_resource type="PackedScene" uid="uid://djj8j6o0w8386" path="res://scenes/game/playground/field/Border.tscn" id="4_qjysl"]
-[ext_resource type="PackedScene" uid="uid://bxoq0ug0n5lgs" path="res://scenes/game/playground/ball/ball_body.tscn" id="5_n36fx"]
+[ext_resource type="PackedScene" uid="uid://bxoq0ug0n5lgs" path="res://scenes/game/playground/ball/ball.tscn" id="5_ge3fp"]
 [ext_resource type="Texture2D" uid="uid://juiob8lgj1sm" path="res://scenes/game/playground/field/separator.png" id="6_i3j2k"]
 [ext_resource type="PackedScene" uid="uid://c2ybwhakexc6j" path="res://scenes/game/playground/paddle/paddle_controller.tscn" id="7_w0kgx"]
 
@@ -14,11 +15,56 @@
 
 [node name="Pong" type="Node2D"]
 script = ExtResource("1_lqc4h")
+DebugBoundarys = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = -1
+[node name="Playground" type="Node" parent="."]
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+[node name="Field" type="Node" parent="Playground"]
+
+[node name="Borders" type="Node2D" parent="Playground/Field"]
+unique_name_in_owner = true
+
+[node name="TopBorder" parent="Playground/Field/Borders" instance=ExtResource("4_qjysl")]
+
+[node name="BottomBorder" parent="Playground/Field/Borders" instance=ExtResource("4_qjysl")]
+
+[node name="Separators" type="Node2D" parent="Playground/Field"]
+
+[node name="Separator_Middle" type="Sprite2D" parent="Playground/Field/Separators"]
+unique_name_in_owner = true
+z_index = -1
+texture = ExtResource("6_i3j2k")
+centered = false
+
+[node name="Separator_Top" type="Sprite2D" parent="Playground/Field/Separators"]
+unique_name_in_owner = true
+z_index = -1
+texture_filter = 1
+rotation = 1.5708
+texture = ExtResource("6_i3j2k")
+
+[node name="Separator_Bottom" type="Sprite2D" parent="Playground/Field/Separators"]
+unique_name_in_owner = true
+z_index = -1
+texture_filter = 1
+rotation = 1.5708
+texture = ExtResource("6_i3j2k")
+
+[node name="Actors" type="Node" parent="Playground"]
+
+[node name="Left" parent="Playground/Actors" instance=ExtResource("7_w0kgx")]
+unique_name_in_owner = true
+PlayerPaddle = 1
+
+[node name="Right" parent="Playground/Actors" instance=ExtResource("7_w0kgx")]
+unique_name_in_owner = true
+
+[node name="Ball" parent="Playground/Actors" instance=ExtResource("5_ge3fp")]
+
+[node name="Ingame_HUD" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="Ingame_HUD"]
+visible = false
 z_index = -2
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,52 +73,32 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_ge3fp")
 
-[node name="UI" parent="CanvasLayer" instance=ExtResource("3_j68dr")]
+[node name="UI" parent="Ingame_HUD" instance=ExtResource("3_j68dr")]
 z_index = 1
 
-[node name="Border" type="Node2D" parent="."]
+[node name="DebugControl" type="Control" parent="Ingame_HUD"]
+z_index = 2
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("4_ge3fp")
 
-[node name="TopBorder" parent="Border" instance=ExtResource("4_qjysl")]
-
-[node name="BottomBorder" parent="Border" instance=ExtResource("4_qjysl")]
-
-[node name="BallBody" parent="." instance=ExtResource("5_n36fx")]
-z_index = 3
-
-[node name="Separators" type="Node2D" parent="."]
-
-[node name="Separator_Middle" type="Sprite2D" parent="Separators"]
-unique_name_in_owner = true
-z_index = -1
-texture = ExtResource("6_i3j2k")
-centered = false
-
-[node name="Separator_Top" type="Sprite2D" parent="Separators"]
-unique_name_in_owner = true
-z_index = -1
-texture_filter = 1
-rotation = 1.5708
-texture = ExtResource("6_i3j2k")
-
-[node name="Separator_Bottom" type="Sprite2D" parent="Separators"]
-unique_name_in_owner = true
-z_index = -1
-texture_filter = 1
-rotation = 1.5708
-texture = ExtResource("6_i3j2k")
-
-[node name="Paddles" type="Node2D" parent="."]
-
-[node name="Left" parent="Paddles" instance=ExtResource("7_w0kgx")]
-unique_name_in_owner = true
-SPEED = 600.0
-playercolor = Color(0, 0.72549, 0.945098, 1)
-
-[node name="Right" parent="Paddles" instance=ExtResource("7_w0kgx")]
-unique_name_in_owner = true
-SPEED = 600.0
-PlayerPaddle = 1
-playercolor = Color(0.730376, 0.219538, 0.191373, 1)
+[node name="Debug" type="Label" parent="Ingame_HUD/DebugControl"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "DEBUG: "
+horizontal_alignment = 1
 
 [node name="DebugBoundarys" type="Node" parent="."]
 
