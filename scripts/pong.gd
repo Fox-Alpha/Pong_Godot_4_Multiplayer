@@ -35,38 +35,6 @@ func Game_Is_over(_ply):
 func start():
 	var screensize = get_viewport_rect()
 
-	#region Paddle Positionen
-	%Left.position = Vector2(10, screensize.size.y/2)
-	%Right.position = Vector2(screensize.size.x-10, screensize.size.y/2)
-	#endregion
-
-	#region Obere Linie
-	%Separator_Top.position.x = screensize.get_center().x
-	%Separator_Top.position.y = 120
-	var sizetoTOP=Vector2(5, screensize.size.x)
-	var sizeTOP=%Separator_Top.texture.get_size()
-	var scalevactorTOP=sizetoTOP/sizeTOP
-	%Separator_Top.scale = scalevactorTOP
-	#endregion
-
-	#region Untere Linie
-	%Separator_Bottom.position.x = screensize.get_center().x
-	%Separator_Bottom.position.y = screensize.size.y-60
-	var sizetoBOT=Vector2(5, screensize.size.x)
-	var sizeBOT=%Separator_Bottom.texture.get_size()
-	var scalevactorBOT=sizetoBOT/sizeBOT
-	%Separator_Bottom.scale = scalevactorBOT
-	#endregion
-
-	#region Optische Mittellinie an ScreenSize anpassen
-	var pgheight : int = %Separator_Bottom.position.y - %Separator_Top.position.y
-	%Separator_Middle.position = Vector2(screensize.get_center().x, %Separator_Top.position.y)
-	var sizeto=Vector2(5, pgheight)
-	var size=%Separator_Middle.texture.get_size()
-	var scalevactor=sizeto/size
-	%Separator_Middle.scale = scalevactor
-	#endregion
-
 	#region Top Border an Screensize anpassen
 	#top.shape.size.x = screensize.size.x
 	#top.shape.size.y = 20
