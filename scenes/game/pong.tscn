@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://dkc3vognpleb1"]
 
-[ext_resource type="Script" uid="uid://tja8mavrgl1p" path="res://scripts/pong.gd" id="1_lqc4h"]
+[ext_resource type="Script" uid="uid://tja8mavrgl1p" path="res://scenes/game/pong.gd" id="1_lqc4h"]
 [ext_resource type="Texture2D" uid="uid://dssdoid3hbi0d" path="res://assets/images/bg.jpg" id="2_ge3fp"]
 [ext_resource type="PackedScene" uid="uid://ydhpvy3ne5hs" path="res://scenes/game/playground/field/SeparatorLines.tscn" id="3_ge3fp"]
 [ext_resource type="PackedScene" uid="uid://id75m5q4t5ga" path="res://scenes/game/ingame_ui/ui.tscn" id="3_j68dr"]
