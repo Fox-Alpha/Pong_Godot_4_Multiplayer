@@ -11,7 +11,7 @@ func _ready() -> void:
 	SetDebugText.connect(_SetDebugText)
 	var screensize := get_viewport_rect()
 	var bottomcenter := Vector2( screensize.size.x / 2.0, screensize.size.y)
-	position = bottomcenter
+	#position = bottomcenter
 	pass # Replace with function body.
 
 
