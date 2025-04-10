@@ -30,9 +30,9 @@ size_flags_vertical = 3
 metadata/_edit_use_anchors_ = true
 
 [node name="Ingame_HUD" type="CanvasLayer" parent="."]
-follow_viewport_enabled = true
 
 [node name="TextureRect" type="TextureRect" parent="Ingame_HUD"]
+visible = false
 z_index = -4096
 anchors_preset = 15
 anchor_right = 1.0
@@ -42,22 +42,42 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource("2_ge3fp")
+metadata/_edit_lock_ = true
 
 [node name="UI" parent="Ingame_HUD" instance=ExtResource("3_j68dr")]
 z_index = 100
 z_as_relative = false
 y_sort_enabled = true
+metadata/_edit_lock_ = true
 
 [node name="DebugControl" parent="Ingame_HUD" instance=ExtResource("7_ge3fp")]
-offset_left = 8.0
-offset_top = 841.0
-offset_right = 8.0
-offset_bottom = 841.0
+anchors_preset = 2
+anchor_right = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 1
 
-[node name="Camera2D" type="Camera2D" parent="."]
-anchor_mode = 0
-editor_draw_limits = true
-editor_draw_drag_margin = true
+[node name="ResetButton" parent="Ingame_HUD/DebugControl" index="0"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = -55.0
+offset_right = 125.0
+offset_bottom = -5.0
+grow_vertical = 0
+
+[node name="Debug" parent="Ingame_HUD/DebugControl" index="1"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 145.0
+offset_top = -38.0
+offset_right = 210.0
+offset_bottom = -14.0
+grow_vertical = 2
 
 [node name="Playground" type="Node2D" parent="."]
 
@@ -67,11 +87,13 @@ editor_draw_drag_margin = true
 unique_name_in_owner = true
 
 [node name="TopBorder" parent="Playground/Field/Borders" instance=ExtResource("4_qjysl")]
+position = Vector2(691, 90)
+rotation = 3.14159
 
 [node name="BottomBorder" parent="Playground/Field/Borders" instance=ExtResource("4_qjysl")]
+position = Vector2(684, 898)
 
 [node name="SeparatorLines" parent="Playground/Field" instance=ExtResource("3_ge3fp")]
-position = Vector2(204, 285)
 
 [node name="Actors" type="Node2D" parent="Playground"]
 
@@ -90,6 +112,7 @@ PlayerPaddle = 1
 [node name="DebugBoundarys" type="Node" parent="."]
 
 [node name="DbgLeft" type="StaticBody2D" parent="DebugBoundarys" groups=["DebugBoundarys"]]
+position = Vector2(0, 385)
 rotation = 1.5708
 physics_material_override = SubResource("PhysicsMaterial_0xy4s")
 
@@ -98,10 +121,12 @@ shape = SubResource("WorldBoundaryShape2D_2wuhs")
 disabled = true
 
 [node name="DbgRight" type="StaticBody2D" parent="DebugBoundarys" groups=["DebugBoundarys"]]
-position = Vector2(1434, 0)
+position = Vector2(1434, 443)
 rotation = -1.5708
 physics_material_override = SubResource("PhysicsMaterial_0xy4s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DebugBoundarys/DbgRight"]
 shape = SubResource("WorldBoundaryShape2D_2wuhs")
 disabled = true
+
+[editable path="Ingame_HUD/DebugControl"]
