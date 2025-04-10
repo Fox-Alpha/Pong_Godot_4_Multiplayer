@@ -17,29 +17,51 @@
 script = ExtResource("1_lqc4h")
 DebugBoundarys = true
 
-[node name="Ingame_HUD" type="CanvasLayer" parent="."]
-
-[node name="TextureRect" type="TextureRect" parent="Ingame_HUD"]
+[node name="Control" type="Control" parent="."]
+z_index = -1024
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Ingame_HUD" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="TextureRect" type="TextureRect" parent="Ingame_HUD"]
+z_index = -4096
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 texture = ExtResource("2_ge3fp")
 
 [node name="UI" parent="Ingame_HUD" instance=ExtResource("3_j68dr")]
+z_index = 100
+z_as_relative = false
+y_sort_enabled = true
 
 [node name="DebugControl" parent="Ingame_HUD" instance=ExtResource("7_ge3fp")]
+offset_left = 8.0
+offset_top = 841.0
+offset_right = 8.0
+offset_bottom = 841.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+editor_draw_limits = true
+editor_draw_drag_margin = true
 
 [node name="Playground" type="Node2D" parent="."]
-z_index = 1
-z_as_relative = false
-y_sort_enabled = true
 
 [node name="Field" type="Node2D" parent="Playground"]
-z_index = 1
-z_as_relative = false
-y_sort_enabled = true
 
 [node name="Borders" type="Node2D" parent="Playground/Field"]
 unique_name_in_owner = true
@@ -49,31 +71,25 @@ unique_name_in_owner = true
 [node name="BottomBorder" parent="Playground/Field/Borders" instance=ExtResource("4_qjysl")]
 
 [node name="SeparatorLines" parent="Playground/Field" instance=ExtResource("3_ge3fp")]
-z_index = 1025
-z_as_relative = false
-y_sort_enabled = true
+position = Vector2(204, 285)
 
 [node name="Actors" type="Node2D" parent="Playground"]
-z_index = 2
-z_as_relative = false
-y_sort_enabled = true
 
 [node name="Left" parent="Playground/Actors" instance=ExtResource("7_w0kgx")]
 unique_name_in_owner = true
-z_index = 1
+position = Vector2(12, 450)
 
 [node name="Ball" parent="Playground/Actors" instance=ExtResource("5_ge3fp")]
-z_index = 1
+position = Vector2(720, 450)
 
 [node name="Right" parent="Playground/Actors" instance=ExtResource("7_w0kgx")]
 unique_name_in_owner = true
-z_index = 1
+position = Vector2(1434, 450)
 PlayerPaddle = 1
 
 [node name="DebugBoundarys" type="Node" parent="."]
 
 [node name="DbgLeft" type="StaticBody2D" parent="DebugBoundarys" groups=["DebugBoundarys"]]
-position = Vector2(25, 0)
 rotation = 1.5708
 physics_material_override = SubResource("PhysicsMaterial_0xy4s")
 
