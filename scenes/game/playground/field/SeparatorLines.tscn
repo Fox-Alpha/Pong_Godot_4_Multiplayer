@@ -11,20 +11,17 @@ BottomLine = NodePath("Separator_Bottom")
 
 [node name="Separator_Top" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-z_index = -1
 texture_filter = 1
 rotation = 1.5708
 texture = ExtResource("1_let22")
 
 [node name="Separator_Middle" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-z_index = -1
 texture = ExtResource("1_let22")
 centered = false
 
 [node name="Separator_Bottom" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-z_index = -1
 texture_filter = 1
 rotation = 1.5708
 texture = ExtResource("1_let22")
