@@ -26,9 +26,6 @@ Game="*res://scripts/globals.gd"
 window/size/viewport_width=1440
 window/size/viewport_height=900
 window/size/initial_position_type=0
-window/size/initial_position=Vector2i(250, 250)
-window/stretch/mode="viewport"
-window/stretch/aspect="keep_height"
 
 [editor]
 
