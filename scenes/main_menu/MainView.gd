@@ -24,7 +24,7 @@ extends Control
 
 
 func _on_button_start_hot_seat_pressed():
-	var err = get_tree().change_scene_to_file("res://scenes/game/Pong_40.tscn")
+	var err = get_tree().change_scene_to_file("res://scenes/game/Pong.tscn")
 	if err != OK:
 		print("Fehler bim laden der Szene: %s" % error_string(err))
 	#ToDo: Switch to Local Game Options before starting
