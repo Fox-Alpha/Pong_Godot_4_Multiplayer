@@ -10,20 +10,76 @@ extends Node2D
 		return DebugBoundarys
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	Game.Left_Player_Scored.connect(Score, CONNECT_DEFERRED)
-	Game.Right_Player_Scored.connect(Score, CONNECT_DEFERRED)
-	Game.Game_Is_over.connect(Game_Is_over, CONNECT_DEFERRED)
+func _ready() -> void:
+	Game.Game_State_Changed.connect(_Game_State_Has_Changed, CONNECT_DEFERRED)
+	print("Pong Szene => _ready()")
+	await get_tree().process_frame
+	print("Pong Szene => _ready() => Awaited Frame set next GameState")
+	Game.Game_State_Changed.emit(Game.GameStates.GAMEINITIALIZED)
 
+
+func _enter_tree() -> void:
+	Game.Game_State_Changed.emit(Game.GameStates.GAMEINITIALIZING)
+	print("Pong Szene => _enter_tree()")
+
+
+func _Game_State_Has_Changed(new_gs : Game.GameStates) -> void:
+	print("Pong Szene => _Game_State_Has_Changed(GS:%s)" % Game.GameStates.keys()[new_gs])
+	match new_gs:
+		Game.GameStates.GAMEISLOADING:
+			pass
+		Game.GameStates.GAMEINITIALIZING:
+			pass
+		Game.GameStates.GAMEINITIALIZED:
+			_Connect_Signals()
+			Game.Game_State_Changed.emit(Game.GameStates.GAMEWAITFORSTART)
+			pass
+		Game.GameStates.GAMEWAITFORSTART:
+			pass
+		Game.GameStates.GAMEISSTARTED:
+			pass
+		Game.GameStates.GAMEOVER:
+			pass
+
+
+func _Connect_Signals() -> void:
+	Game.Scr_Manager.Left_Player_Scored.connect(Score, CONNECT_DEFERRED)
+	Game.Scr_Manager.Right_Player_Scored.connect(Score, CONNECT_DEFERRED)
+	pass
+
+
+# Called when the node enters the scene tree for the first time.
+func __ready():
+	Game.Game_Is_over.connect(Game_Is_over, CONNECT_DEFERRED)
+	Game.Game_Prepare_Round.connect(Preparing_Round, CONNECT_DEFERRED)
+	Game.Game_Prepare_Next_Round.connect(_Prepare_Next_Round)
+	_initstart()
+	Game.Game_State_Changed.emit(Game.GameStates.GAMEWAITFORSTART)
+	
 	if DebugBoundarys:
 		EnableBoundarys(DebugBoundarys)
-	
-	start()
+
+
+func _initstart():
+	var screensize = get_viewport_rect()
+
+	#region Top Border an Screensize anpassen
+	%Borders/TopBorder.position = Vector2(screensize.get_center().x, 100)
+	#endregion
+
+	#region Bottom Border an Screensize anpassen
+	%Borders/BottomBorder.position.x = screensize.get_center().x
+	%Borders/BottomBorder.position.y = screensize.size.y-40
+	#endregion
+
+
+func Preparing_Round() -> void:
+	pass
 
 
 func Score(_score :int):
-	Game.waitForNextRound = true
+	#Game.waitForNextRound = true
+	pass
 
 
 func Game_Is_over(_ply):
@@ -32,46 +88,25 @@ func Game_Is_over(_ply):
 	Game.p2_score = 0
 
 
-func start():
-	var screensize = get_viewport_rect()
-
-	#region Top Border an Screensize anpassen
-	#top.shape.size.x = screensize.size.x
-	#top.shape.size.y = 20
-	%Borders/TopBorder.position = Vector2(screensize.get_center().x, 100)
-	#%Borders/TopBorder.position.y = 100
-	#endregion
-
-	#region Bottom Border an Screensize anpassen
-	#bottom.shape.size.x = screensize.size.x
-	#bottom.shape.size.y = 20
-	%Borders/BottomBorder.position.x = screensize.get_center().x
-	%Borders/BottomBorder.position.y = screensize.size.y-40
-	#endregion
-
-
 func _input(event):
 	# Receives mouse button input
 	if event is InputEventMouseButton:
 		match event.button_index:
 			MOUSE_BUTTON_RIGHT:
-				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED) # if Input.MOUSE_MODE_VISIBLE else Input.MOUSE_MODE_VISIBLE)
+				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED if Input.mouse_mode == Input.MouseMode.MOUSE_MODE_VISIBLE else Input.MOUSE_MODE_VISIBLE)
 			MOUSE_BUTTON_LEFT:
 				HandleGameState()
 
 
 func _unhandled_key_input(_event):
-	HandleGameState()
+	#HandleGameState()
+	pass
 
 
 func HandleGameState():
-	if(!Game.hasGamestartet): # or Game.waitForNextRound):
-		if(!Game.hasGamestartet):
-			Game.hasGamestartet = true
-			Game.emit_signal("New_Game_Started")
-		if(Game.hasGamestartet  and Game.waitForNextRound):
-			Game.waitForNextRound = false
-			Game.emit_signal("Next_Round_Started")
+	if Game.GameState == Game.GameStates.GAMEWAITFORSTART:
+		Game.Game_State_Changed.emit(Game.GameStates.GAMEISSTARTED)
+		pass
 
 
 func EnableBoundarys(value) -> void :
@@ -80,4 +115,12 @@ func EnableBoundarys(value) -> void :
 		for d : Node in DbgGrp:
 			d.get_child(0).set("disabled", !value)
 			pass
+	pass
+
+
+func _Prepare_Next_Round() -> void:
+	#Reset Ball
+	#Reset Paddles
+	#Reset Scores in UI
+	#Show Message and wait for Key Press
 	pass

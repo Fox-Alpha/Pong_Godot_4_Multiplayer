@@ -1,24 +1,34 @@
 extends Node
 
-var MaxScore : int = 10
-var currentround : int = 1
-var maxrounds : int = 3
-
-var hasGamestartet : bool = false
-var waitForNextRound : bool = false
-var isMultiplayerGame : bool = false
-
-var GameScene : PackedScene = preload("res://scenes/game/Pong_40.tscn")
-
-var playerdic : Dictionary = {"player1":"", "player2":"", "Rounds":1}
-
+#region ScenesAndNodes
+var GameMainScene : PackedScene = preload("res://scenes/game/pong.tscn")
 var DebugControl : Control :
 	set (value):
 		DebugControl = value
 	get:
 		return DebugControl
+#endregion
 
-##### Beispiel Setter / Getter
+#region GameStates
+#var isMultiplayerGame : bool = false
+enum GameStates {
+	NOTDEFINED,
+	GAMELOADINGERROR,
+	MAINMENU,
+	GAMEISLOADING,
+	GAMEINITIALIZING,
+	GAMEINITIALIZED,
+	GAMEWAITFORSTART,
+	GAMEISSTARTED,
+	GAMEOVER,
+}
+var GameState : GameStates = GameStates.NOTDEFINED
+#endregion
+
+@onready var rng : RandomNumberGenerator = RandomNumberGenerator.new()
+
+
+#region ##### Beispiel Setter / Getter
 #var sprite_offset : Vector2 = Vector2.ZERO :
 #	set (value):
 #		sprite_offset = on_sprite_offset_change(value)
@@ -27,65 +37,97 @@ var DebugControl : Control :
 #
 #func on_sprite_offset_change(value: Vector2) -> Vector2:
 #	return Vector2.ZERO
-#####
+#endregion #####
 
-var p1_score :int = 0 :
-	set (value):
-		p1_score = value
-		_check_win_state()
-	get:
-		return p1_score
-
-var p2_score : int = 0 :
-	set (value):
-		p2_score = value
-		_check_win_state()
-	get:
-		return p2_score
-
-signal Left_Player_Scored
-signal Right_Player_Scored
-signal Game_Is_over
-signal New_Game_Started
-signal Next_Round_Started
-#signal Update_Player_Dict(p1:String, p2:String,score:int,rounds:int)
+#region Signals
 signal Game_Window_Size_Changed
-signal Game_Reseted
+signal Game_State_Changed(gs : GameStates)
 
+signal Register_Game_Logic(instanceid : int)
+signal Register_UI_Manager(instanceid : int)
+signal Register_SCORE_Manager(instanceid : int)
+#endregion
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	Game_Is_over.connect( _Game_Is_over, CONNECT_DEFERRED)
+#region GAMEMANAGER
+var GameLogic : Node
+var Scr_Manager : ManagerBaseClass
+var UI_Manager : ManagerBaseClass
+#endregion
+
+#signal Update_Player_Dict(p1:String, p2:String,score:int,rounds:int)
+
+func _ready() -> void:
 	get_tree().get_root().size_changed.connect(func(): Game_Window_Size_Changed.emit())
+	Game_State_Changed.connect(_Game_State_Has_Changed)
+	Register_SCORE_Manager.connect(_Register_SCORE_Manager, CONNECT_ONE_SHOT)
+	Register_UI_Manager.connect(_Register_UI_Manager, CONNECT_ONE_SHOT)
+	Register_Game_Logic.connect(_Register_Game_Logic, CONNECT_ONE_SHOT)
 
 
-func _check_win_state():
-	if(MaxScore == p1_score):
-		emit_signal("Game_Is_over", playerdic["player1"])
-	elif(MaxScore == p2_score):
-		emit_signal("Game_Is_over", playerdic["player2"])
+func _Game_State_Has_Changed(new_gs : Game.GameStates) -> void:
+	GameState = new_gs
+	print("Global Szene => _Game_State_Has_Changed(GS:%s)" % Game.GameStates.keys()[new_gs])
+	match new_gs:
+		Game.GameStates.GAMEISLOADING:
+			pass
+		Game.GameStates.GAMEINITIALIZING:
+			pass
+		Game.GameStates.GAMEINITIALIZED:
+			_Connect_Signals()
+			pass
+		Game.GameStates.GAMEWAITFORSTART:
+			pass
+		Game.GameStates.GAMEISSTARTED:
+			pass
+		Game.GameStates.GAMEOVER:
+			pass
 
 
-func update_player_dict(p1:String, p2:String,score:int = 10,rounds:int = 3, colors:Array = [Color.DARK_BLUE, Color.ORANGE_RED]):
-	playerdic.clear()
-	playerdic = {"player1":p1, "player2":p2, "rounds":rounds, "score": score, "colors":colors}
-
-	for r in range(1, rounds+1):
-		var roundname = "round_{rnd}".format({"rnd":str(r)})
-		playerdic[roundname] = {"p1": 0, "p2":0, "won": "NONE"}
+func _Connect_Signals() -> void:
 	pass
 
 
-
-func _Game_Is_over(ply):
-	var roundname = "round_{rnd}".format({"rnd":str(currentround)})
-
-	playerdic[roundname] = {"p1": p1_score, "p2":p2_score, "won": ply}
-	currentround += 1
-	pass
+func _Register_SCORE_Manager(IID : int) -> void:
+	print("Global => _Register_SCORE_Manager()")
+	if is_instance_id_valid(IID):
+		Scr_Manager = instance_from_id(IID)
+		pass
 
 
-func get_playercolor(ply:int) -> Color:
-	#var col = playerdic["colors"][ply]
-	randomize()
-	return Color.from_rgba8(randi_range(0, 255), randi_range(0, 255), randi_range(0, 255))# col
+func _Register_UI_Manager(IID : int) -> void:
+	print("Global => _Register_UI_Manager()")
+	if is_instance_id_valid(IID):
+		UI_Manager = instance_from_id(IID)
+		pass
+
+
+func _Register_Game_Logic(IID : int) -> void:
+	print("Global => _Register_Game_Logic()")
+	if is_instance_id_valid(IID):
+		GameLogic = instance_from_id(IID)
+		pass
+
+########
+
+#func __ready():
+	#get_tree().get_root().size_changed.connect(func(): Game_Window_Size_Changed.emit())
+	#Game_State_Changed.connect(_Game_State_Changed)
+	#
+	#Game_Prepare_Next_Round.connect(_Prepare_Next_Round)
+	#Game_Max_Round_Reached.connect(_Game_Is_over, CONNECT_DEFERRED)
+	#Game_Is_over.connect(_Game_Is_over, CONNECT_DEFERRED)
+	#Left_Player_Scored.connect(_Player_has_Scored)
+	#Right_Player_Scored.connect(_Player_has_Scored)
+	#
+	#New_Game_Started.connect(func(): pass)
+	#Next_Round_Started.connect(func(): pass)
+	#Game_Reseted.connect(func(): pass)
+	#Game_Prepare_Round.connect(func(): pass)
+
+
+#func _Game_Is_over(ply):
+	#var roundname = "round_{rnd}".format({"rnd":str(currentround)})
+#
+	#playerdic[roundname] = {"p1": p1_score, "p2":p2_score, "won": ply}
+	#currentround += 1
+	#pass
