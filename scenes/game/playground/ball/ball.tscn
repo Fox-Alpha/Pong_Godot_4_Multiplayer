@@ -20,6 +20,6 @@ shape = SubResource("CircleShape2D_r41i7")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(0, -5.96046e-08)
-scale = Vector2(0.4, 0.4)
+rect = Rect2(-5, -5, 10, 10)
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
