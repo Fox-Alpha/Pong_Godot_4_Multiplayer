@@ -1,0 +1,42 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjtkc3l3ofy8l"]
+
+[ext_resource type="Script" uid="uid://cbng15n8yicc2" path="res://scenes/game/ingame_ui/panel_container_center_messages.gd" id="1_q2igs"]
+
+[node name="PanelContainer_CenterMessages" type="PanelContainer"]
+visible = false
+script = ExtResource("1_q2igs")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="WinLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Game Over"
+horizontal_alignment = 1
+
+[node name="StartLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_type_variation = &"OptionenLabel"
+theme_override_font_sizes/font_size = 32
+text = "Press Any Key to start"
+horizontal_alignment = 1
+
+[node name="GameMessageLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"OptionenLabel"
+theme_override_font_sizes/font_size = 32
+text = "Press Any Key to start"
+horizontal_alignment = 1
