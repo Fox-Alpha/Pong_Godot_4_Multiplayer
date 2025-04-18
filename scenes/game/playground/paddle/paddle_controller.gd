@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-const BLUEPLAYER : Color = Color.DARK_BLUE
-const REDPLAYER : Color = Color.DARK_RED
+const BLUEPLAYER : Color = Color.BLUE
+const REDPLAYER : Color = Color.RED
 const DEFAULTCOLOR : Color = Color.WHITE
 
 @export_range(100.0,1000.0,10.0) var SPEED = 600.0
@@ -20,21 +20,46 @@ func _ready():
 	Game.Game_Window_Size_Changed.connect(func(): 
 		PlayerLeftPosition = Vector2(10, get_viewport_rect().size.y/2)
 		PlayerRightPosition = Vector2(get_viewport_rect().size.x-10, get_viewport_rect().size.y/2)
-		_reset_position()
+		_reset_paddle_position()
 	)
+	Game.Game_State_Changed.connect(_Game_State_Has_Changed)
 
-	Game.connect("New_Game_Started", _reset_position, CONNECT_DEFERRED)
-	Game.connect("Next_Round_Started", _reset_position, CONNECT_DEFERRED)
 
+func _Connect_Signals() -> void:
+	pass
+
+
+func _Game_State_Has_Changed(new_gs : Game.GameStates) -> void:
+	print("Paddle Controller(%s) => _Game_State_Has_Changed(GS:%s)" % [Player.keys()[PlayerPaddle], Game.GameStates.keys()[new_gs]])
+	match new_gs:
+		Game.GameStates.GAMEISLOADING:
+			pass
+		Game.GameStates.GAMEINITIALIZING:
+			pass
+		Game.GameStates.GAMEINITIALIZED:
+			_Connect_Signals()
+			_Game_Initialized()
+			pass
+		Game.GameStates.GAMEWAITFORSTART:
+			_reset_paddle_position()
+			pass
+		Game.GameStates.GAMEISSTARTED:
+			pass
+		Game.GameStates.GAMEOVER:
+			pass
+
+
+func _Game_Initialized() -> void:
 	if playercolor == DEFAULTCOLOR:
-		playercolor = BLUEPLAYER if playercolor == DEFAULTCOLOR else REDPLAYER
-
-	$Paddle.self_modulate = Game.get_playercolor(PlayerPaddle)
-	_reset_position()
-
+		playercolor = BLUEPLAYER if PlayerPaddle == Player.PLAYER_1 else REDPLAYER
+	$Paddle.self_modulate = playercolor
+	$Paddle.self_modulate = Game.GameLogic.get_playercolor(PlayerPaddle)
 
 
 func _physics_process(delta):
+	if Game.GameState != Game.GameStates.GAMEISSTARTED:
+		return
+
 	var direction : Vector2 = Vector2.ZERO
 	match PlayerPaddle:
 		Player.PLAYER_1:
@@ -47,15 +72,10 @@ func _physics_process(delta):
 		velocity = direction * SPEED * delta
 		move_and_collide(velocity)
 
-func _reset_position():
-	#var screensize = get_viewport_rect()
-	# Paddle Positionen
-	match PlayerPaddle:
-		0:
-			#position = Vector2(10, screensize.size.y/2)
-			position = PlayerLeftPosition
-		1:
-			#position = Vector2(screensize.size.x-10, screensize.size.y/2)
-			position = PlayerRightPosition
-	#var col = Game.get_playercolor(PlayerPaddle)
-	#$Paddle.self_modulate = col
+func _reset_paddle_position():
+	position = PlayerLeftPosition if PlayerPaddle == Player.PLAYER_1 else PlayerRightPosition
+	#match PlayerPaddle:
+		#0:
+			#position = PlayerLeftPosition
+		#1:
+			#position = PlayerRightPosition
