@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://id75m5q4t5ga"]
+[gd_scene load_steps=3 format=3 uid="uid://id75m5q4t5ga"]
 
 [ext_resource type="Script" uid="uid://cvv6nm2otdpmj" path="res://scenes/game/ingame_ui/ui.gd" id="1_t2nfm"]
+[ext_resource type="PackedScene" uid="uid://cjtkc3l3ofy8l" path="res://scenes/game/ingame_ui/PanelContainerCenterMessages.tscn" id="2_4iv2h"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -93,42 +94,6 @@ max_lines_visible = 1
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="PanelContainer_GameMessages" type="PanelContainer" parent="VBoxContainer/CenterContainer"]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/CenterContainer/PanelContainer_GameMessages"]
-layout_mode = 2
-theme_override_constants/margin_left = 25
-theme_override_constants/margin_top = 25
-theme_override_constants/margin_right = 25
-theme_override_constants/margin_bottom = 25
-
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CenterContainer/PanelContainer_GameMessages/MarginContainer"]
-layout_mode = 2
-
-[node name="WinLabel" type="Label" parent="VBoxContainer/CenterContainer/PanelContainer_GameMessages/MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Game Over"
-horizontal_alignment = 1
-
-[node name="StartLabel" type="Label" parent="VBoxContainer/CenterContainer/PanelContainer_GameMessages/MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-theme_type_variation = &"OptionenLabel"
-theme_override_font_sizes/font_size = 32
-text = "Press Any Key to start"
-horizontal_alignment = 1
-
-[node name="GameMessageLabel" type="Label" parent="VBoxContainer/CenterContainer/PanelContainer_GameMessages/MarginContainer/VBoxContainer"]
+[node name="PanelContainer_CenterMessages" parent="VBoxContainer/CenterContainer" instance=ExtResource("2_4iv2h")]
 unique_name_in_owner = true
 layout_mode = 2
-theme_type_variation = &"OptionenLabel"
-theme_override_font_sizes/font_size = 32
-text = "Press Any Key to start"
-horizontal_alignment = 1
