@@ -1,9 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://dkc3vognpleb1"]
+[gd_scene load_steps=14 format=3 uid="uid://dkc3vognpleb1"]
 
 [ext_resource type="Script" uid="uid://tja8mavrgl1p" path="res://scenes/game/pong.gd" id="1_lqc4h"]
 [ext_resource type="Texture2D" uid="uid://dssdoid3hbi0d" path="res://assets/images/bg.jpg" id="2_ge3fp"]
+[ext_resource type="Script" uid="uid://dl381yoc5d8d2" path="res://scripts/gamelogic/game_logic.gd" id="2_m1oxw"]
+[ext_resource type="Script" uid="uid://ntxkakoicsgs" path="res://scripts/gamelogic/ui_manager.gd" id="3_few4i"]
 [ext_resource type="PackedScene" uid="uid://ydhpvy3ne5hs" path="res://scenes/game/playground/field/SeparatorLines.tscn" id="3_ge3fp"]
 [ext_resource type="PackedScene" uid="uid://id75m5q4t5ga" path="res://scenes/game/ingame_ui/ui.tscn" id="3_j68dr"]
+[ext_resource type="Script" uid="uid://7m5h527ye5qv" path="res://scripts/gamelogic/score_manager.gd" id="4_3mjub"]
 [ext_resource type="PackedScene" uid="uid://djj8j6o0w8386" path="res://scenes/game/playground/field/Border.tscn" id="4_qjysl"]
 [ext_resource type="PackedScene" uid="uid://bxoq0ug0n5lgs" path="res://scenes/game/playground/ball/ball.tscn" id="5_ge3fp"]
 [ext_resource type="PackedScene" uid="uid://dejefyt130lr2" path="res://scenes/debug/DebugControl.tscn" id="7_ge3fp"]
@@ -16,6 +19,15 @@
 [node name="Pong" type="Node2D"]
 script = ExtResource("1_lqc4h")
 DebugBoundarys = true
+
+[node name="GameLogic" type="Node" parent="."]
+script = ExtResource("2_m1oxw")
+
+[node name="UI_Manager" type="Node" parent="GameLogic"]
+script = ExtResource("3_few4i")
+
+[node name="Score_Manager" type="Node" parent="GameLogic"]
+script = ExtResource("4_3mjub")
 
 [node name="Control" type="Control" parent="."]
 z_index = -1024
