@@ -8,28 +8,25 @@ extends Control
 @export_subgroup("SubPanels", "MainMenu")
 @export var MainMenuSubViewPanes : Dictionary[String, NodePath] = {}
 
-# var _node_name = "Main"
-## Seperate MeinMenu in own ViewScene
-## TODO: Move ButtonPressed events here
 
 # Called when the node enters the scene tree for the first time.
-#func _ready():
-	#preload("res://scenes/game/playground/ball/ball_body.tscn")
-	#pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(_delta):
-	#pass
+func _ready():
+	Game.Game_State_Changed.emit(Game.GameStates.MAINMENU)
 
 
 func _on_button_start_hot_seat_pressed():
-	var err = get_tree().change_scene_to_file("res://scenes/game/Pong.tscn")
+	var err = get_tree().change_scene_to_file(Game.GameMainScene.resource_path)
 	if err != OK:
 		print("Fehler bim laden der Szene: %s" % error_string(err))
+		Game.Game_State_Changed.emit(Game.GameStates.GAMELOADINGERROR)
+		return
 	#ToDo: Switch to Local Game Options before starting
+	Game.Game_State_Changed.emit(Game.GameStates.GAMEISLOADING)
 	pass
-	
+
+
+func _exit_tree() -> void:
+	print("MeinMenu Unloading => _exit_tree()")
 
 
 func _on_button_multiplayer_options_pressed():
