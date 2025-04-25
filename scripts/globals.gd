@@ -72,7 +72,7 @@ func _Game_State_Has_Changed(new_gs : Game.GameStates) -> void:
 	if GameState == new_gs: return
 
 	GameState = new_gs 
-	print("Global Szene => _Game_State_Has_Changed(GS:%s)" % Game.GameStates.keys()[new_gs])
+	print("Global Autoload => _Game_State_Has_Changed(GS:%s)" % Game.GameStates.keys()[new_gs])
 	match new_gs:
 		Game.GameStates.GAMEISLOADING:
 			pass
