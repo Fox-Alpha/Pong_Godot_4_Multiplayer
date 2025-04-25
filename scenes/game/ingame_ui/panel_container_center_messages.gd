@@ -28,6 +28,12 @@ func _Game_State_Has_Changed(new_gs : Game.GameStates ):
 			_Set_Center_Message(ANYKEYMESSAGE)
 			visible = true
 			pass
+		Game.GameStates.GAMEMAXSCORE:
+			pass
+		Game.GameStates.GAMEMAXROUND:
+			_Set_Center_Message(NEXTROUND)
+			visible = true
+			pass
 		Game.GameStates.GAMEOVER:
 			_Set_Center_Message(GAMEOVER)
 			visible = true

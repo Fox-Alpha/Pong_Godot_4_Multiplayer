@@ -38,6 +38,10 @@ func _Game_State_Has_Changed(new_gs : Game.GameStates) -> void:
 			pass
 		Game.GameStates.GAMEISSTARTED:
 			pass
+		Game.GameStates.GAMEMAXSCORE:
+			pass
+		Game.GameStates.GAMEMAXROUND:
+			pass
 		Game.GameStates.GAMEOVER:
 			pass
 

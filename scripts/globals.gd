@@ -20,6 +20,8 @@ enum GameStates {
 	GAMEINITIALIZED,
 	GAMEWAITFORSTART,
 	GAMEISSTARTED,
+	GAMEMAXSCORE,
+	GAMEMAXROUND,
 	GAMEOVER,
 }
 var GameState : GameStates = GameStates.NOTDEFINED
@@ -42,6 +44,8 @@ var GameState : GameStates = GameStates.NOTDEFINED
 #region Signals
 signal Game_Window_Size_Changed
 signal Game_State_Changed(gs : GameStates)
+signal Game_Max_Score_Reached
+signal Game_Max_Round_Reached
 
 signal Register_Game_Logic(instanceid : int)
 signal Register_UI_Manager(instanceid : int)
@@ -65,7 +69,9 @@ func _ready() -> void:
 
 
 func _Game_State_Has_Changed(new_gs : Game.GameStates) -> void:
-	GameState = new_gs
+	if GameState == new_gs: return
+
+	GameState = new_gs 
 	print("Global Szene => _Game_State_Has_Changed(GS:%s)" % Game.GameStates.keys()[new_gs])
 	match new_gs:
 		Game.GameStates.GAMEISLOADING:
@@ -84,28 +90,35 @@ func _Game_State_Has_Changed(new_gs : Game.GameStates) -> void:
 
 
 func _Connect_Signals() -> void:
+	Game_Max_Score_Reached.connect(_Game_Max_Score_Reached)
+	Game_Max_Round_Reached.connect(_Game_Max_Round_Reached)
 	pass
 
 
 func _Register_SCORE_Manager(IID : int) -> void:
-	print("Global => _Register_SCORE_Manager()")
 	if is_instance_id_valid(IID):
+		print("Global => _Register_SCORE_Manager()")
 		Scr_Manager = instance_from_id(IID)
-		pass
+	else:
+		Game_State_Changed.emit(GameStates.GAMELOADINGERROR)
+		print("Global => ERROR: _Register_SCORE_Manager()")
 
 
 func _Register_UI_Manager(IID : int) -> void:
-	print("Global => _Register_UI_Manager()")
 	if is_instance_id_valid(IID):
+		print("Global => _Register_UI_Manager()")
 		UI_Manager = instance_from_id(IID)
-		pass
-
+	else:
+		Game_State_Changed.emit(GameStates.GAMELOADINGERROR)
+		print("Global => ERROR: _Register_UI_Manager()")
 
 func _Register_Game_Logic(IID : int) -> void:
-	print("Global => _Register_Game_Logic()")
 	if is_instance_id_valid(IID):
+		print("Global => _Register_Game_Logic()")
 		GameLogic = instance_from_id(IID)
-		pass
+	else:
+		Game_State_Changed.emit(GameStates.GAMELOADINGERROR)
+		print("Global => ERROR: _Register_Game_Logic()")
 
 ########
 
