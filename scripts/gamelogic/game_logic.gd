@@ -13,8 +13,48 @@ func _ready() -> void:
 
 func _enter_tree() -> void:
 	print("GameLogic => _enter_tree()")
+	Game.Game_State_Changed.connect(_Game_State_Has_Changed, CONNECT_DEFERRED)
 	Game.Register_Game_Logic.emit(self.get_instance_id())
 	pass
+
+
+func _Game_State_Has_Changed(new_gs : Game.GameStates) -> void:
+	print("GameLogic => _Game_State_Has_Changed(GS:%s)" % Game.GameStates.keys()[new_gs])
+	match new_gs:
+		Game.GameStates.GAMEISLOADING:
+			pass
+		Game.GameStates.GAMEINITIALIZING:
+			pass
+		Game.GameStates.GAMEINITIALIZED:
+			_Connect_Signals()
+			Game.Game_State_Changed.emit(Game.GameStates.GAMEWAITFORSTART)
+			pass
+		Game.GameStates.GAMEWAITFORSTART:
+			pass
+		Game.GameStates.GAMEISSTARTED:
+			pass
+		Game.GameStates.GAMEOVER:
+			pass
+
+
+func _Connect_Signals() -> void:
+	Game.Scr_Manager.Left_Player_Scored.connect(Score, CONNECT_DEFERRED)
+	Game.Scr_Manager.Right_Player_Scored.connect(Score, CONNECT_DEFERRED)
+	pass
+
+
+func Score(_score :int):
+	#check for max score
+	#Game.Game_State_Changed.emit(Game.GameStates.GAMEMAXSCORE)
+	#check for max round
+	#Game.Game_State_Changed.emit(Game.GameStates.GAMEMAXROUND)
+	#check win / GameOver
+	#Game.Game_State_Changed.emit(Game.GameStates.GAMEOVER)
+	# Sonst Warten auf start
+	print("GameLogic => Score()::Changing GS:%s " % Game.GameStates.keys()[Game.GameStates.GAMEWAITFORSTART])
+	Game.Game_State_Changed.emit(Game.GameStates.GAMEWAITFORSTART)
+	pass
+
 
 
 func get_playercolor(_ply:int) -> Color:
