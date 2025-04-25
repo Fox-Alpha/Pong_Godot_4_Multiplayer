@@ -52,10 +52,10 @@ func _Set_Center_Message(message : String) -> void:
 func _gui_input(event: InputEvent) -> void:
 #func _input(event):
 	# Receives mouse button input
-	if Game.GameState != Game.GameStates.GAMEWAITFORSTART:
-		return
 
 	if event is InputEventMouseButton:
+		if Game.GameState != Game.GameStates.GAMEWAITFORSTART:
+			return
 		match event.button_index:
 			MOUSE_BUTTON_RIGHT:
 				if Game.GameState == Game.GameStates.GAMEWAITFORSTART:
