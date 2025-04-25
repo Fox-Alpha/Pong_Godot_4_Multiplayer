@@ -45,8 +45,10 @@ func _Connect_Signals() -> void:
 
 func Score(_score :int):
 	#check for max score
+	Game.Scr_Manager.Check_Score_State()
 	#Game.Game_State_Changed.emit(Game.GameStates.GAMEMAXSCORE)
 	#check for max round
+	Game.Scr_Manager.Check_Max_Round_State()
 	#Game.Game_State_Changed.emit(Game.GameStates.GAMEMAXROUND)
 	#check win / GameOver
 	#Game.Game_State_Changed.emit(Game.GameStates.GAMEOVER)
