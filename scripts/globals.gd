@@ -61,6 +61,7 @@ var UI_Manager : ManagerBaseClass
 #signal Update_Player_Dict(p1:String, p2:String,score:int,rounds:int)
 
 func _ready() -> void:
+	print("Global Autoload => _ready()")
 	get_tree().get_root().size_changed.connect(func(): Game_Window_Size_Changed.emit())
 	Game_State_Changed.connect(_Game_State_Has_Changed)
 	Register_SCORE_Manager.connect(_Register_SCORE_Manager, CONNECT_ONE_SHOT)
@@ -111,6 +112,7 @@ func _Register_UI_Manager(IID : int) -> void:
 	else:
 		Game_State_Changed.emit(GameStates.GAMELOADINGERROR)
 		print("Global => ERROR: _Register_UI_Manager()")
+
 
 func _Register_Game_Logic(IID : int) -> void:
 	if is_instance_id_valid(IID):
