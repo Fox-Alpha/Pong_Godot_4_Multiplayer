@@ -63,10 +63,29 @@ var UI_Manager : ManagerBaseClass
 func _ready() -> void:
 	print("Global Autoload => _ready()")
 	get_tree().get_root().size_changed.connect(func(): Game_Window_Size_Changed.emit())
-	Game_State_Changed.connect(_Game_State_Has_Changed)
+	get_tree().get_root().tree_exited.connect(_Game_is_closing)
+	Game_State_Changed.connect(_Game_State_Has_Changed, CONNECT_DEFERRED)
 	Register_SCORE_Manager.connect(_Register_SCORE_Manager, CONNECT_ONE_SHOT)
 	Register_UI_Manager.connect(_Register_UI_Manager, CONNECT_ONE_SHOT)
 	Register_Game_Logic.connect(_Register_Game_Logic, CONNECT_ONE_SHOT)
+
+
+func _exit_tree() -> void:
+	print("Global Autoload => _exit_tree()")
+
+
+func _Game_is_closing() -> void: 
+	print("Global Autoload => GameScene::_exiting_tree()")
+
+
+func _notification(what: int) -> void:
+	match what:
+		NOTIFICATION_ENTER_TREE:
+			print("Global Autoload => _notification()::NOTIFICATION_ENTER_TREE")
+			pass
+		NOTIFICATION_EXIT_TREE:
+			print("Global Autoload => _notification()::NOTIFICATION_EXIT_TREE")
+			pass
 
 
 func _Game_State_Has_Changed(new_gs : Game.GameStates) -> void:
