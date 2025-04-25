@@ -120,6 +120,17 @@ func _Register_Game_Logic(IID : int) -> void:
 		Game_State_Changed.emit(GameStates.GAMELOADINGERROR)
 		print("Global => ERROR: _Register_Game_Logic()")
 
+
+func _Game_Max_Score_Reached() -> void:
+	Game_State_Changed.emit(GameStates.GAMEMAXSCORE)
+	pass
+
+
+func _Game_Max_Round_Reached() -> void:
+	Game_State_Changed.emit(GameStates.GAMEMAXROUND)
+	pass
+
+
 ########
 
 #func __ready():
