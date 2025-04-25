@@ -32,6 +32,7 @@ func _ready() -> void:
 	super()
 	Left_Player_Scored.connect(_Left_Player_Scored, CONNECT_DEFERRED )
 	Right_Player_Scored.connect(_Right_Player_Scored, CONNECT_DEFERRED )
+	Game.Game_State_Changed.connect(_Game_State_Has_Changed, CONNECT_DEFERRED)
 
 
 func _enter_tree() -> void:
@@ -40,6 +41,31 @@ func _enter_tree() -> void:
 	pass
 
 #####
+func _Game_State_Has_Changed(new_gs : Game.GameStates) -> void:
+	print("ScoreManager => _Game_State_Has_Changed(GS:%s)" % Game.GameStates.keys()[new_gs])
+	match new_gs:
+		Game.GameStates.GAMEISLOADING:
+			pass
+		Game.GameStates.GAMEINITIALIZING:
+			pass
+		Game.GameStates.GAMEINITIALIZED:
+			_Connect_Signals()
+			pass
+		Game.GameStates.GAMEWAITFORSTART:
+			pass
+		Game.GameStates.GAMEISSTARTED:
+			pass
+		Game.GameStates.GAMEMAXSCORE:
+			pass
+		Game.GameStates.GAMEMAXROUND:
+			pass
+		Game.GameStates.GAMEOVER:
+			pass
+
+
+func _Connect_Signals() -> void:
+	pass
+
 
 func _Left_Player_Scored(scorevalue : int = 1) -> void:
 	p1_score += scorevalue
