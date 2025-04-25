@@ -106,6 +106,13 @@ func _Game_State_Has_Changed(new_gs : Game.GameStates) -> void:
 		Game.GameStates.GAMEISSTARTED:
 			pass
 		Game.GameStates.GAMEOVER:
+			#TBD Change Scene to Score Table
+			pass
+		Game.GameStates.GAMEMAXSCORE:
+			#TBD Prepare for next Round
+			pass
+		Game.GameStates.GAMEMAXROUND:
+			#TBD maybe Prepare GameOver
 			pass
 
 
