@@ -6,7 +6,7 @@ extends Control
 #@onready var multiplayer_client = %MultiplayerClient
 
 @export_subgroup("SubPanels", "MainMenu")
-@export var MainMenuSubViewPanes : Dictionary[String, NodePath] = {}
+@export var MainMenuSubViewPanels : Dictionary[String, NodePath] = {}
 
 
 # Called when the node enters the scene tree for the first time.
@@ -21,12 +21,13 @@ func _on_button_start_hot_seat_pressed():
 		Game.Game_State_Changed.emit(Game.GameStates.GAMELOADINGERROR)
 		return
 	#ToDo: Switch to Local Game Options before starting
-	Game.Game_State_Changed.emit(Game.GameStates.GAMEISLOADING)
+	
 	pass
 
 
 func _exit_tree() -> void:
 	print("MeinMenu Unloading => _exit_tree()")
+	Game.Game_State_Changed.emit(Game.GameStates.GAMEISLOADING)
 
 
 func _on_button_multiplayer_options_pressed():
@@ -36,3 +37,8 @@ func _on_button_multiplayer_options_pressed():
 
 func _on_button_start_pressed():
 	start_options.visible = !start_options.visible
+
+
+func _on_button_quit_pressed() -> void:
+	get_tree().quit()
+	pass # Replace with function body.
