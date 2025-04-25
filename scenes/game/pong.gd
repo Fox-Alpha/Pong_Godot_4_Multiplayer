@@ -79,6 +79,7 @@ func Preparing_Round() -> void:
 
 func Score(_score :int):
 	#Game.waitForNextRound = true
+	Game.Game_State_Changed.emit(Game.GameStates.GAMEWAITFORSTART)
 	pass
 
 

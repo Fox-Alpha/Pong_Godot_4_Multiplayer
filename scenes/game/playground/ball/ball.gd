@@ -24,6 +24,7 @@ func _Game_State_Has_Changed(new_gs : Game.GameStates) -> void:
 			velocity = _randomize_ball_direction()
 			pass
 		Game.GameStates.GAMEWAITFORSTART:
+			reset_ball_position()
 			pass
 		Game.GameStates.GAMEISSTARTED:
 			pass
