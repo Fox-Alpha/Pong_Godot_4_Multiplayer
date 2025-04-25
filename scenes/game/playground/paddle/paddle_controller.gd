@@ -22,7 +22,7 @@ func _ready():
 		PlayerRightPosition = Vector2(get_viewport_rect().size.x-10, get_viewport_rect().size.y/2)
 		_reset_paddle_position()
 	)
-	Game.Game_State_Changed.connect(_Game_State_Has_Changed)
+	Game.Game_State_Changed.connect(_Game_State_Has_Changed, CONNECT_DEFERRED)
 
 
 func _Connect_Signals() -> void:
@@ -37,8 +37,8 @@ func _Game_State_Has_Changed(new_gs : Game.GameStates) -> void:
 		Game.GameStates.GAMEINITIALIZING:
 			pass
 		Game.GameStates.GAMEINITIALIZED:
+			_Game_Initializing()
 			_Connect_Signals()
-			_Game_Initialized()
 			pass
 		Game.GameStates.GAMEWAITFORSTART:
 			_reset_paddle_position()
@@ -53,7 +53,7 @@ func _Game_State_Has_Changed(new_gs : Game.GameStates) -> void:
 			pass
 
 
-func _Game_Initialized() -> void:
+func _Game_Initializing() -> void:
 	if playercolor == DEFAULTCOLOR:
 		playercolor = BLUEPLAYER if PlayerPaddle == Player.PLAYER_1 else REDPLAYER
 	$Paddle.self_modulate = playercolor
