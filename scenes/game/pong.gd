@@ -1,4 +1,6 @@
 extends Node2D
+class_name Pong
+
 
 @onready var top = %Borders/TopBorder/BorderCollision
 @onready var bottom = %Borders/BottomBorder/BorderCollision
@@ -9,7 +11,7 @@ extends Node2D
 	get:
 		return DebugBoundarys
 
-
+#region Engin Oberloads
 func _ready() -> void:
 	Game.Game_State_Changed.connect(_Game_State_Has_Changed, CONNECT_DEFERRED)
 	print("Pong Szene => _ready()")
@@ -21,6 +23,36 @@ func _ready() -> void:
 func _enter_tree() -> void:
 	Game.Game_State_Changed.emit(Game.GameStates.GAMEINITIALIZING)
 	print("Pong Szene => _enter_tree()")
+
+
+func _input(event):
+	# Receives mouse button input
+	if event is InputEventMouseButton:
+		match event.button_index:
+			MOUSE_BUTTON_RIGHT:
+				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED if Input.mouse_mode == Input.MouseMode.MOUSE_MODE_VISIBLE else Input.MOUSE_MODE_VISIBLE)
+			#MOUSE_BUTTON_LEFT:
+				#HandleGameState()
+
+
+func _unhandled_key_input(_event):
+	#HandleGameState()
+	pass
+#endregion
+
+
+#region ClassMethods
+func _initstart():
+	var screensize = get_viewport_rect()
+
+	#region Top Border an Screensize anpassen
+	%Borders/TopBorder.position = Vector2(screensize.get_center().x, 100)
+	#endregion
+
+	#region Bottom Border an Screensize anpassen
+	%Borders/BottomBorder.position.x = screensize.get_center().x
+	%Borders/BottomBorder.position.y = screensize.size.y-40
+	#endregion
 
 
 func _Game_State_Has_Changed(new_gs : Game.GameStates) -> void:
@@ -52,35 +84,12 @@ func _Connect_Signals() -> void:
 	pass
 
 
-# Called when the node enters the scene tree for the first time.
-func __ready():
-	Game.Game_Is_over.connect(Game_Is_over, CONNECT_DEFERRED)
-	Game.Game_Prepare_Round.connect(Preparing_Round, CONNECT_DEFERRED)
-	Game.Game_Prepare_Next_Round.connect(_Prepare_Next_Round)
-	_initstart()
-	Game.Game_State_Changed.emit(Game.GameStates.GAMEWAITFORSTART)
-	
-	if DebugBoundarys:
-		EnableBoundarys(DebugBoundarys)
-
-
-func _initstart():
-	var screensize = get_viewport_rect()
-
-	#region Top Border an Screensize anpassen
-	%Borders/TopBorder.position = Vector2(screensize.get_center().x, 100)
-	#endregion
-
-	#region Bottom Border an Screensize anpassen
-	%Borders/BottomBorder.position.x = screensize.get_center().x
-	%Borders/BottomBorder.position.y = screensize.size.y-40
-	#endregion
-
-
 func Preparing_Round() -> void:
 	pass
+#endregion
 
 
+#region SignalMethods
 func Score(_score :int):
 	#Game.waitForNextRound = true
 	Game.Game_State_Changed.emit(Game.GameStates.GAMEWAITFORSTART)
@@ -93,27 +102,6 @@ func Game_Is_over(_ply):
 	Game.p2_score = 0
 
 
-func _input(event):
-	# Receives mouse button input
-	if event is InputEventMouseButton:
-		match event.button_index:
-			MOUSE_BUTTON_RIGHT:
-				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED if Input.mouse_mode == Input.MouseMode.MOUSE_MODE_VISIBLE else Input.MOUSE_MODE_VISIBLE)
-			MOUSE_BUTTON_LEFT:
-				HandleGameState()
-
-
-func _unhandled_key_input(_event):
-	#HandleGameState()
-	pass
-
-
-func HandleGameState():
-	if Game.GameState == Game.GameStates.GAMEWAITFORSTART:
-		Game.Game_State_Changed.emit(Game.GameStates.GAMEISSTARTED)
-		pass
-
-
 func EnableBoundarys(value) -> void :
 	if is_inside_tree():
 		var DbgGrp = get_tree().get_nodes_in_group("DebugBoundarys")
@@ -121,11 +109,20 @@ func EnableBoundarys(value) -> void :
 			d.get_child(0).set("disabled", !value)
 			pass
 	pass
+#endregion
 
 
-func _Prepare_Next_Round() -> void:
+#region UNUSED_METHODS
+func __NOTUSED__HandleGameState():
+	if Game.GameState == Game.GameStates.GAMEWAITFORSTART:
+		Game.Game_State_Changed.emit(Game.GameStates.GAMEISSTARTED)
+		pass
+
+
+func __NOTUSED__Prepare_Next_Round() -> void:
 	#Reset Ball
 	#Reset Paddles
 	#Reset Scores in UI
 	#Show Message and wait for Key Press
 	pass
+#endregion
