@@ -17,9 +17,9 @@ func _Game_State_Has_Changed(new_gs : Game.GameStates) -> void:
 		Game.GameStates.GAMEISLOADING:
 			pass
 		Game.GameStates.GAMEINITIALIZING:
-			_speed = SPEED
 			pass
 		Game.GameStates.GAMEINITIALIZED:
+			_speed = SPEED
 			_Connect_Signals()
 			velocity = _randomize_ball_direction()
 			pass
@@ -44,6 +44,7 @@ func _Connect_Signals():
 
 func _enter_tree() -> void:
 	print("Ball Szene => _enter_tree()")
+
 
 func _physics_process(delta):
 	if Game.GameState != Game.GameStates.GAMEISSTARTED:
