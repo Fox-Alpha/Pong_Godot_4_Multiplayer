@@ -69,13 +69,13 @@ func _Connect_Signals() -> void:
 
 func _Left_Player_Scored(scorevalue : int = 1) -> void:
 	p1_score += scorevalue
-	if _Check_Score_State(p1_score):
+	if Check_Score_State(p1_score):
 		pass
 
 
 func _Right_Player_Scored(scorevalue : int = 1) -> void:
 	p2_score += scorevalue
-	if _Check_Score_State(p2_score):
+	if Check_Score_State(p2_score):
 		pass
 
 #####
@@ -87,11 +87,11 @@ func _Check_Round_Win_State():
 		pass # emit_signal("Game_Is_over", playerdic["player2"])
 
 
-func _Check_Max_Round_State() -> bool:
+func Check_Max_Round_State() -> bool:
 	return currentround == maxrounds+1
 
 
-func _Check_Score_State(score) -> bool:
+func Check_Score_State(score) -> bool:
 	return MaxScore == score
 
 #####
