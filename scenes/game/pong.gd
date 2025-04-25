@@ -13,7 +13,6 @@ class_name Pong
 
 #region Engin Oberloads
 func _ready() -> void:
-	Game.Game_State_Changed.connect(_Game_State_Has_Changed, CONNECT_DEFERRED)
 	print("Pong Szene => _ready()")
 	await get_tree().process_frame
 	print("Pong Szene => _ready() => Awaited Frame set next GameState")
@@ -21,8 +20,9 @@ func _ready() -> void:
 
 
 func _enter_tree() -> void:
-	Game.Game_State_Changed.emit(Game.GameStates.GAMEINITIALIZING)
 	print("Pong Szene => _enter_tree()")
+	Game.Game_State_Changed.connect(_Game_State_Has_Changed, CONNECT_DEFERRED)
+	Game.Game_State_Changed.emit(Game.GameStates.GAMEINITIALIZING)
 
 
 func _input(event):
@@ -64,7 +64,6 @@ func _Game_State_Has_Changed(new_gs : Game.GameStates) -> void:
 			pass
 		Game.GameStates.GAMEINITIALIZED:
 			_Connect_Signals()
-			Game.Game_State_Changed.emit(Game.GameStates.GAMEWAITFORSTART)
 			pass
 		Game.GameStates.GAMEWAITFORSTART:
 			pass
@@ -91,8 +90,6 @@ func Preparing_Round() -> void:
 
 #region SignalMethods
 func Score(_score :int):
-	#Game.waitForNextRound = true
-	Game.Game_State_Changed.emit(Game.GameStates.GAMEWAITFORSTART)
 	pass
 
 
