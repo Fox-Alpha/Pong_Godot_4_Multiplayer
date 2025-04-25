@@ -8,7 +8,7 @@ offset_right = 520.0
 offset_bottom = 520.0
 theme_override_constants/separation = 16
 script = ExtResource("1_bobse")
-MainMenuSubViewPanes = Dictionary[String, NodePath]({
+MainMenuSubViewPanels = Dictionary[String, NodePath]({
 "ClientGameView": NodePath("MultiplayerClientView"),
 "GameSettingsView": NodePath("GameSettingsView"),
 "HostGameView": NodePath("MultiplayerHostView"),
@@ -623,3 +623,4 @@ text = "Back To Mainmenu"
 
 [connection signal="pressed" from="MainMenuView/MarginContainer/VBoxContainer/PanelContainer_MenuButtons/VBoxContainer/ButtonStart" to="." method="_on_button_start_pressed"]
 [connection signal="pressed" from="MainMenuView/MarginContainer/VBoxContainer/PanelContainer_MenuButtons/VBoxContainer/StartOptions/VBoxContainer/PanelLocalHotseat/MarginContainer/VBoxContainer/ButtonStartHotSeat" to="." method="_on_button_start_hot_seat_pressed"]
+[connection signal="pressed" from="MainMenuView/MarginContainer/VBoxContainer/ButtonQuit" to="." method="_on_button_quit_pressed"]
